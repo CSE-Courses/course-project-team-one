@@ -1,0 +1,26 @@
+.home-header {
+    font-size: 2rem;
+    background-color:  #7492ed;
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.header-text1{
+    font-family: "Poppins", sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color:white
+  }
+
+.header-text2{
+    font-family: "Poppins", sans-serif;
+    font-size: 50px;
+    font-weight: lighter;
+    font-style
+    : italic;
+    color: white;
+  }
+
+
