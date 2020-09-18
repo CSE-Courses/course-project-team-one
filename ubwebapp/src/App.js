@@ -12,6 +12,7 @@ import ProfilePage from './components/profilepage/profile-page';
 import NotificationsPage from './components/notificationspage/notifications-page';
 import SettingsPage from './components/settingspage/settings-page';
 import CourseDocumentsPage from './components/coursedocumentspage/coursedocuments-page';
+import LoginPage from './components/loginpage/login-page';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route path ="/notifications" exact component={NotificationsPage}/>
             <Route path ="/settings" exact component={SettingsPage}/>
             <Route path ="/coursedocuments" exact component={CourseDocumentsPage}/>
+            <Route path ="/login" exact component={LoginPage}/>
           </Switch>
         </Router>
     </div>
