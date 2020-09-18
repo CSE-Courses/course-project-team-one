@@ -23,4 +23,25 @@
     color: white;
   }
 
+  .profile-button{
+    border:none;
+    width:120px;
+    height: 55px;
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    background-color:  #7492ed;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+  }
 
+  .profile-button-text{
+    margin-top: 15%;
+    font-size: 17px;
+  }
+
+  .header-button{
+    background-color:  #7492ed;
+    border:none;
+    }
