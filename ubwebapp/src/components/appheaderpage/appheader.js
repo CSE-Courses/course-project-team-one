@@ -10,7 +10,7 @@ const AppHeader = () => {
         <Link to ={"/"}><button className = "header-button"><text className="header-text1">UB</text><text className="header-text2">Learns</text></button></Link>
         <Link to ={"/profile"}>
           <button className="profile-button">
-            <FontAwesomeIcon icon = "user" size = "3x"/>
+            <FontAwesomeIcon className="head-icon" icon = "user" size = "3x"/>
             <text className="profile-button-text">Profile</text>
           </button>
         </Link>

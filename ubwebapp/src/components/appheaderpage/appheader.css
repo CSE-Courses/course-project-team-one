@@ -34,14 +34,41 @@
     color: white;
     display: flex;
     justify-content: space-evenly;
+    text-align: center;
   }
 
   .profile-button-text{
-    margin-top: 15%;
-    font-size: 17px;
+    margin-top: 10px;
+    font-size: 25px;
   }
 
   .header-button{
     background-color:  #7492ed;
     border:none;
+    }
+    
+    /*FOR MOBILE */
+    @media(max-width: 700px){
+      .header-text1,.header-text2{
+        font-size: 35px;
+        margin-left: 10px;
+      }
+    }
+
+    @media(max-width: 425px){
+      .header-text1,.header-text2{
+        font-size: 30px;
+        margin-left: 10px;
+      }
+      .home-header{
+        display: flex;
+        justify-content: space-between;
+      }
+      .profile-button{
+        width: 10px;
+        margin-right: 10px;
+      }
+      .profile-button-text{
+        display: none;
+      }
     }

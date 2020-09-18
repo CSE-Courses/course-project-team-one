@@ -1,7 +1,7 @@
 import React from 'react';
 import "./settings-page.css";
 import {BrowserRouter as Router, Route, Switch, Link, Redirect} from "react-router-dom";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'; 
 
 
 function SettingsPage() {

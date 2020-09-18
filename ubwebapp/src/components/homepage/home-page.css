@@ -32,11 +32,12 @@
     background-color: #c40202;
     width: 50px;
     height: 50px;
-    margin-left: 165px;
-    margin-top: -40px;
+    margin-left: 82%;
+    margin-top: -20%;
     font-size: 20px;
     display:flex;
     justify-content: center;
+    position: relative;
   }
 
   .notify-text{
@@ -98,6 +99,10 @@ select {
       border: none;
   }
 
+  .home-icon{
+    font-size: 100px;
+  }
+
   form {
     min-height: 10vh;
     display: flex;
@@ -113,4 +118,30 @@ select {
     margin-left: 150px;
     background: white;
     color:#7492ed;
+  }
+
+  /* MOBILE */
+  @media(max-width:425px){
+    .home-button{
+        width: 100px;
+        height: 100px;
+        margin: 12px;
+    }
+    .notify{
+      width:25px;
+      height: 25px;
+      margin-left: 20%;
+      margin-top: -5%;
+      position: absolute;
+    }
+    .notify-text, .home-text{
+      font-size: 10px;
+    }
+    .home-icon{
+      font-size: 50px;
+    }
+    .notify-text{
+      margin-top: 7px;
+    }
+    
   }
