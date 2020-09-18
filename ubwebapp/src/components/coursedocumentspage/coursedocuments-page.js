@@ -1,12 +1,19 @@
 import React from 'react';
 import "./coursedocuments-page.css";
+import {BrowserRouter as Router, Route, Switch, Link, Redirect} from "react-router-dom";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 
 function CourseDocumentsPage() {
     return (
-      <div className="coursedocuments-header">
+      <div>
+        <div className="coursedocuments-header">
           <header><h1>Course Documents</h1></header>
-      </div>
+        </div>
+        <Link to="/"><button className="backhome">
+          <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
+          </button></Link>
+        </div>
     );
   }
   

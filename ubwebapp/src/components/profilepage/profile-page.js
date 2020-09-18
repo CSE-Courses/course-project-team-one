@@ -1,12 +1,19 @@
 import React from 'react';
 import "./profile-page.css";
+import {BrowserRouter as Router, Route, Switch, Link, Redirect} from "react-router-dom";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 
 function ProfilePage() {
     return (
-      <div className="profile-header">
+      <div>
+        <div className="profile-header">
           <header><h1>Profile</h1></header>
-      </div>
+        </div>
+        <Link to="/"><button className="backhome">
+          <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
+        </button></Link>
+    </div>
     );
   }
   
