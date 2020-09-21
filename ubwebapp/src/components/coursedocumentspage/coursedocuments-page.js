@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logistics from "./courseDocumentsComponents/Logistics";
-//import Syllabus from "./courseDocumentsComponents/Syllabus";
+import Syllabus from "./courseDocumentsComponents/Syllabus";
 //import Slides from "./courseDocumentsComponents/Slides";
 
 function CourseDocumentsPage() {
@@ -59,6 +59,12 @@ function CourseDocumentsPage() {
             meetingPassword={logistics.meetingPassword}
             meeting={logistics.meeting}
           />{" "}
+        </div>{" "}
+        <div className="container">
+          <Syllabus
+            syllabus={syllabusDetails.syllabus}
+            website="https://cse442.com/"
+          />
         </div>{" "}
       </div>{" "}
     </div>
