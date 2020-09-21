@@ -10,7 +10,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logistics from "./courseDocumentsComponents/Logistics";
 import Syllabus from "./courseDocumentsComponents/Syllabus";
-//import Slides from "./courseDocumentsComponents/Slides";
+import Slides from "./courseDocumentsComponents/Slides";
 
 function CourseDocumentsPage() {
   const logistics = {
@@ -66,6 +66,19 @@ function CourseDocumentsPage() {
             website="https://cse442.com/"
           />
         </div>{" "}
+        <div className="container">
+          <Slides
+            slides1={slidesDetails.slides1}
+            slides2={slidesDetails.slides2}
+            slides3={slidesDetails.slides3}
+            slides4={slidesDetails.slides4}
+            slides6={slidesDetails.slides6}
+            slides7={slidesDetails.slides7}
+            slides8={slidesDetails.slides8}
+            slides9={slidesDetails.slides9}
+          />{" "}
+        </div>{" "}
+
       </div>{" "}
     </div>
   );
