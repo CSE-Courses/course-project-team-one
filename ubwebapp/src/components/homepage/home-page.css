@@ -52,9 +52,7 @@
 
  select {
   outline: 0;
-  box-shadow: none;
   border: 0 !important;
-  background-image: none;
   color: #7492ed;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
@@ -127,7 +125,7 @@
     .notify{
       width:25px;
       height: 25px;
-      margin-left: 20%%;
+      margin-left: 20%;
       margin-top: 0;
       position: absolute;
     }

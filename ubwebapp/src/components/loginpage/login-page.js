@@ -16,7 +16,7 @@ function LoginPage() {
                 <input type="text" placeholder="  Username"></input></div>
                 <div><br></br><br></br><br></br><br></br><br></br>
                 <FontAwesomeIcon icon = "lock" size="2x"/>
-                <input type="text" placeholder="  Password"></input></div>
+                <input classname="text-password" type="password" placeholder="  Password"></input></div>
                 <br></br><br></br><br></br>
                 <div className="button-div"><Link to="/"><button className="button-login">Login</button></Link></div>
               </div>  
