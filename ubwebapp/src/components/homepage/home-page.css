@@ -51,14 +51,17 @@
   }
 
  select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
   outline: 0;
   box-shadow: none;
   border: 0 !important;
   background-image: none;
+  color: #7492ed;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  width: 600px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 20px;
 }
 
 .select {
@@ -66,14 +69,7 @@
   position: relative;
   overflow: hidden;
 }
-select {
-  color: #7492ed;
-  font-family: "Poppins", sans-serif;
-  cursor: pointer;
-  width: 600px;
-  height: 50px;
-  font-size: 20px;
-}
+
 /* Arrow */
 .select::after {
   content: "\25BC";
@@ -85,6 +81,7 @@ select {
   cursor: pointer;
   color: white;
 }
+
 
   /*Buttons */
   .home-button {
@@ -125,13 +122,13 @@ select {
     .home-button{
         width: 100px;
         height: 100px;
-        margin: 12px;
+        margin: 15px;
     }
     .notify{
       width:25px;
       height: 25px;
-      margin-left: 20%;
-      margin-top: -5%;
+      margin-left: 20%%;
+      margin-top: 0;
       position: absolute;
     }
     .notify-text, .home-text{
@@ -140,8 +137,6 @@ select {
     .home-icon{
       font-size: 50px;
     }
-    .notify-text{
-      margin-top: 7px;
-    }
+
     
   }

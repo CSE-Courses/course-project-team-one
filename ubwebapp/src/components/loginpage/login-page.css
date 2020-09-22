@@ -57,10 +57,13 @@ input{
     font-size: 20px;
 }
 
-
-.button-login{
+.button-div{
     margin-left: auto;
     margin-right: auto;
+
+}
+
+.button-login{
     width:170px;
     height:50px;
     border-radius: 20px;
