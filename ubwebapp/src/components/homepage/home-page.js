@@ -1,6 +1,7 @@
 import React from 'react';
 import App from '../../App';
 import queryString from 'query-string';
+import AppHeader from '../appheaderpage/appheader';
 import {BrowserRouter as Router, Route, Switch, Link, Redirect, useLocation} from "react-router-dom";
 import './home-page.css';
 import HomebuttonLayout from './homebutton-layout';
@@ -25,8 +26,9 @@ function HomePage() {
    //Correct login
   return (
       <div>
-        <ClassSelect></ClassSelect>
-        <HomebuttonLayout></HomebuttonLayout>
+        <AppHeader username={data.username} password={data.password}/> 
+        <ClassSelect username={data.username} password={data.password}></ClassSelect>
+        <HomebuttonLayout username={data.username} password={data.password}></HomebuttonLayout>
       </div>
   );
  

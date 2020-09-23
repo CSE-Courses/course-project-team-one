@@ -3,7 +3,6 @@ import './App.css';
 import {BrowserRouter as Router, Route, Switch, Link, Redirect} from "react-router-dom";
 
 //Components
-import AppHeader from './components/appheaderpage/appheader';
 import HomePage from './components/homepage/home-page';
 import AssignmentsPage from './components/assignmentspage/assignments-page';
 import GradesPage from './components/gradespage/grades-page';
@@ -20,7 +19,7 @@ function App() {
   return (
     <div>
       <Router>
-        <AppHeader/> 
+        
           <Switch>
             <Route path="/" exact component={HomePage}/>
             <Route path ="/assignments" exact component={AssignmentsPage}/>
