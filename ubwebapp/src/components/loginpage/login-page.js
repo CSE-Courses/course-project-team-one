@@ -10,15 +10,7 @@ function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  //If correct log in eneted go to homepage, otherwise stay
-  const verify= () => {
-    console.log(username);
-    if (username == "student1" && password== "password"){
-      return "/?q=" + username;
-    }
-    /*Wrong info */
-    return "/login?false"
-  }
+ 
   //Reset values after click
   const reset = () => {
     setUsername("");
@@ -30,15 +22,16 @@ function LoginPage() {
           <div className="login-bubble">
             <div className="bubble-content">
               <h1 className="head-text"><text>Welcome to </text><text className="bold-blue">UB</text><text className="italic">Learns!</text></h1>
-              <form onSubmit={verify} className="entry">
-                <div>
+              <form className="entry">
+                <div className="user-entry">
                 <FontAwesomeIcon icon = "user" size="2x"/>
-                <input name="username" onChange={e => setUsername(e.target.value)} type="text" placeholder="  Username" value={username}></input></div>
-                <div><br></br><br></br><br></br><br></br><br></br>
+                <input classname="input" name="username" onChange={e => setUsername(e.target.value)} type="text" placeholder="  Username" value={username}></input></div>
+                <br></br><br></br><br></br><br></br><br></br>
+                <div className="password-entry">
                 <FontAwesomeIcon icon = "lock" size="2x"/>
-                <input name="password" onChange={e => setPassword(e.target.value)} classname="text-password" type="password" placeholder="  Password" value={password}></input></div>
+                <input classname="input" name="password" onChange={e => setPassword(e.target.value)} type="password" placeholder="  Password" value={password}></input></div>
                 <br></br><br></br><br></br>
-                <div className="button-div"><Link to={verify}><button onClick ={reset} className="button-login" >Login</button></Link></div>
+                <div className="button-div"><Link to={{pathname: "/", data:{username,password}}}><button onClick ={reset} className="button-login" >Login</button></Link></div>
               </form>  
             </div>
           </div>

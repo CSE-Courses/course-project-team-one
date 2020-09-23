@@ -126,9 +126,14 @@
       width:25px;
       height: 25px;
       margin-left: 20%;
-      margin-top: 0;
+      margin-top: -5%;
       position: absolute;
     }
+    
+    .notify-text{
+      margin-top: 7px;
+    }
+    
     .notify-text, .home-text{
       font-size: 10px;
     }
