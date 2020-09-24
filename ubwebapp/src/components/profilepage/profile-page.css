@@ -5,15 +5,6 @@
   flex-flow: wrap;
 }
 
-.profile-header {
-    font-size: 20px;
-    margin-top: 0px;
-    color:white;
-    display: flex;
-    justify-content: center;
-    flex-flow: wrap;
-  }
-
   .profile-bubble{
     display: flex;
     justify-content: center;
@@ -58,3 +49,33 @@
     margin-right: 340px;
     margin-bottom: 20px;
   }
+
+
+ /* MOBILE */
+ @media(max-width:825px){
+  .profile-body{
+    margin-top: 40px;
+  }
+
+  .backhome-profile{
+    margin-left: 20px;
+    margin-top: 30px;
+  }
+
+  .profile-bubble{
+    width: 300px;
+  }
+
+  .icon-bubble{
+    width:  80px;
+    height: 80px;
+    font-size: 10px;
+  }
+
+  .profile-contents{
+    margin-right: 130px;
+    font-size: 10px;
+    width: 100px;
+  }
+
+}
