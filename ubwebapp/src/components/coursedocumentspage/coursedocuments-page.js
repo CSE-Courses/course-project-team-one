@@ -43,10 +43,13 @@ function CourseDocumentsPage() {
         <div className="coursedocuments-header">
           <header><h1>Course Documents</h1></header>
         </div>
-        <Link to={{pathname:"/", data:{username,password}}}><button className="backhome">
+        <div>
+          <Link to={{pathname:"/", data:{username,password}}}><button className="backhome">
           <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
           </button></Link>
-        <div>
+        </div>
+        
+        <div className="all-center">
           <Logistics
             title="Logistics"
             hour={logistics.hour}
@@ -61,7 +64,7 @@ function CourseDocumentsPage() {
             syllabus={syllabusDetails.syllabus}
             website="https://cse442.com/"
           />
-        </div>{" "}
+        </div>
         <div className="container">
           <Slides
             slides1={slidesDetails.slides1}
