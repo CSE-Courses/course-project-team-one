@@ -6,8 +6,20 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import HW from './HW';
 function GradesPage() {
   const data = useLocation().data;
+  //If incorrect login go back to login, otherwise stay
+  if(data != null){
+    if (!(data.username == "student1" && data.password == "password")){
+      return(<Redirect to= "/login"></Redirect>)
+    }
+   }
+   if(data == null){
+    return(<Redirect to= "/login"></Redirect>)
+   }
+
+  
   const username = data.username;
   const password = data.password;
+
     return (
       <div>
         <AppHeader username={username} password={password}/>
