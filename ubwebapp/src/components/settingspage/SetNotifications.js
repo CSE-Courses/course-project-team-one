@@ -9,20 +9,41 @@ function setNotifications(){
     return(
         <div className="settingsText">
             <h3>Update you on what classes you have</h3>
+            <form>
+            <div className="select">
+                <select name="class-select" className="filter-class">
+                    <option onSelect={updateNotification()}>Select time</option>
+                    <option onSelect={updateNotification()}>Never</option>
+                    <option onSelect={updateNotification()}>1 hour before</option>
+                    <option onSelect={updateNotification()}>5 hours before</option>
+                    <option onSelect={updateNotification()}>1 day before</option>
+                    <option onSelect={updateNotification()}>All the above</option>
 
-            <button onClick={updateNotification}>Never</button>
-            <button onClick={updateNotification}>1 hour before </button>
-            <button onClick={updateNotification}>5 hours before </button>
-            <button onClick={updateNotification}>1 day before </button>
-            <button onClick={updateNotification}>All the above</button>
+                </select>
+            </div>
+        </form>
             <h3>Update you on assignment due dates</h3>
+            <form>
+            <div className="select">
+                <select name="class-select" className="filter-class">
 
-            <button onClick={updateNotification}>Never</button>
-            <button onClick={updateNotification}>1 hour before due</button>
-            <button onClick={updateNotification}>5 hours before due</button>
-            <button onClick={updateNotification}>1 day before due</button>
-            <button onClick={updateNotification}>All the above</button>
-
+                    <option onSelect={updateNotification()}>Select time</option>
+                    <option onSelect={updateNotification()}>Never</option>
+                    <option onSelect={updateNotification()}>1 hour before due</option>
+                    <option onSelect={updateNotification()}>5 hours before due</option>
+                    <option onSelect={updateNotification()}>1 day before due</option>
+                    <option onSelect={updateNotification()}>All the above</option>
+                </select>
+            </div>
+        </form>
+        <select name="ingredients[]" id="ingredients" multiple="multiple">
+    <option value="cheese">Cheese</option>
+    <option value="tomatoes">Tomatoes</option>
+    <option value="mozarella">Mozzarella</option>
+    <option value="mushrooms">Mushrooms</option>
+    <option value="pepperoni">Pepperoni</option>
+    <option value="onions">Onions</option>
+</select>
         </div>
     )
 }

@@ -10,6 +10,9 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    position: relative;
+    left: 600px;
+    top: -100px;
     flex-flow: row;
     color: #7492ed;
     background-color:  #d6eaff;
@@ -24,6 +27,7 @@
   }
   .settingsText{
     color:  #7492ed;
+    left: 20px;
     font-family: "Poppins", sans-serif;   
     margin-top: 15px;
 }

@@ -23,9 +23,9 @@ function SettingsPage() {
         <Link to={{pathname:"/", data:{username,password}}}><button className="backhome">
           <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
         </button></Link>
-        <div className="assignments">
-                <SetNotifications />
-      </div>
+        <div className="settings">
+                <SetNotifications />       
+       </div>
       </div>
 
     );
