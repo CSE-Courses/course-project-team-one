@@ -1,12 +1,17 @@
 import React from 'react';
 import "./notifications-page.css";
-import {BrowserRouter as Router, Route, Switch, Link, Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch, Link, Redirect, useLocation} from "react-router-dom";
+import AppHeader from '../appheaderpage/appheader';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 function Announcementpage() {
+  const data = useLocation().data;
+  const username = data.username;
+  const password = data.password; 
     
     return (
       <div>
+      <AppHeader username={username} password={password}/>
       <div className="announcements-header">
         <header><h1>Announcements</h1></header>
       </div>
