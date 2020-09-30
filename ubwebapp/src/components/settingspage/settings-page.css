@@ -5,3 +5,25 @@
     display: flex;
     justify-content: center;
   }
+
+  .settings {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    flex-flow: row;
+    color: #7492ed;
+    background-color:  #d6eaff;
+    box-shadow: 10px 10px 30px black;
+    border-radius: 40px;
+    margin-top: 100px;
+    width:700px;
+    height:500px;
+    margin-bottom:20px;
+    font-family: "Poppins", sans-serif;
+    text-emphasis-color: black;   
+  }
+  .settingsText{
+    color:  #7492ed;
+    font-family: "Poppins", sans-serif;   
+    margin-top: 15px;
+}

@@ -3,6 +3,7 @@ import "./settings-page.css";
 import {BrowserRouter as Router, Route, Switch, Link, Redirect, useLocation} from "react-router-dom";
 import AppHeader from '../appheaderpage/appheader';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'; 
+import SetNotifications from './SetNotifications'
 
 
 function SettingsPage() {
@@ -11,8 +12,10 @@ function SettingsPage() {
   const username = data.username;
   const password = data.password;
 
+
     return (
       <div>
+
         <AppHeader username={username} password={password}/>
         <div className="settings-header">
           <header><h1>Settings</h1></header>
@@ -20,7 +23,11 @@ function SettingsPage() {
         <Link to={{pathname:"/", data:{username,password}}}><button className="backhome">
           <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
         </button></Link>
+        <div className="assignments">
+                <SetNotifications />
       </div>
+      </div>
+
     );
   }
   
