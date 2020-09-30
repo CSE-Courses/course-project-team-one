@@ -5,3 +5,58 @@
     display: flex;
     justify-content: center;
   }
+
+.announcements-header{
+  font-size: 20px;
+  margin-top: 40px;
+  color:white;
+  display: flex;
+  justify-content: center;
+
+}
+
+.deadline-header{
+  font-size: 20px;
+  color:white;
+  display: flex;
+  justify-content: center;
+}
+
+
+.news{
+  font-size: 11px;
+    height: 700px;
+    width:  1300px;
+    background: white;
+   border-radius: 10px;
+   font-family: "Poppins", sans-serif;
+   box-shadow: 10px 5px 40px black;
+   display: flex;
+   flex-wrap:  wrap;
+   flex-direction: column;
+  margin: 2in;
+  position: relative;
+  align-content: center;
+   
+}
+
+
+.homework{
+  font-size: 11px;
+  height: 700px;
+  width:  1300px;
+  background: white;
+ border-radius: 10px;
+ font-family: "Poppins", sans-serif;
+ box-shadow: 10px 5px 40px black;
+ display: flex;
+ flex-wrap:  wrap;
+ flex-direction: column;
+margin: 2in;
+position: relative;
+align-content: center;
+}
+
+
+
+

@@ -12,6 +12,8 @@ import NotificationsPage from './components/notificationspage/notifications-page
 import SettingsPage from './components/settingspage/settings-page';
 import CourseDocumentsPage from './components/coursedocumentspage/coursedocuments-page';
 import LoginPage from './components/loginpage/login-page';
+import Announcementpage from './components/notificationspage/Announcement';
+import Deadlinepage from './components/notificationspage/Deadline';
 
 
 function App() {
@@ -30,6 +32,9 @@ function App() {
             <Route path ="/settings" exact component={SettingsPage}/>
             <Route path ="/coursedocuments" exact component={CourseDocumentsPage}/>
             <Route path ="/login" exact component={LoginPage}/>
+            <Route path ="/announcements" exact component={Announcementpage}/>
+            <Route path ="/deadlines" exact component={Deadlinepage}/>
+
           </Switch>
         </Router>
     </div>

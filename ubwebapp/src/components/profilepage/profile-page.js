@@ -15,12 +15,22 @@ function ProfilePage() {
       
       <div>
         <AppHeader username={username} password={password}> </AppHeader>
-        <div className="profile-header">
-          <header><h1>Profile</h1></header>
+        
+          <Link to={{pathname:"/", data:{username,password}}}>
+            <button className="backhome-profile">
+            <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
+            </button></Link>
+          
+          <div className= "profile-body">
+          <div className="profile-bubble">
+            <div className="icon-bubble"><FontAwesomeIcon icon = 'user' size = "5x"/></div>
+            <div className="profile-contents">
+              <h1>Johnny AppleSeed</h1><br></br><br></br><br></br>
+              <h1>UBIT : 50220000 </h1><br></br><br></br><br></br>
+              <h1>Email : appleseed@buffalo.edu</h1>
+            </div>
+          </div>
         </div>
-        <Link to={{pathname:"/", data:{username,password}}}><button className="backhome">
-          <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
-        </button></Link>
     </div>
     );
   }
