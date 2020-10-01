@@ -31,7 +31,7 @@ function Deadlinepage(){
       <script>
         document.write(Date());
 </script>
-        <Link to="notifications"><button className="backhome">
+        <Link to={{pathname:"/notifications", data:{username,password}}}><button className="backhome">
         <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
     </button></Link>
 
