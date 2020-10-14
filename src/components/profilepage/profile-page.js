@@ -39,7 +39,11 @@ function ProfilePage() {
               <h1>Johnny AppleSeed</h1><br></br><br></br><br></br>
               <h1>UBIT : 50220000 </h1><br></br><br></br><br></br>
               <h1>Email : appleseed@buffalo.edu</h1>
-              <button>Sign out</button>
+              
+              <Link to={{pathname:"/login"}}>
+                <button>Sign out</button>
+              </Link>
+
             </div>
           </div>
         </div>
