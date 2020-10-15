@@ -14,5 +14,5 @@ app.get('/',(req,res) => res.send('UB Learns alternative'));
 
 app.use('/users',require('./routes/users'));
 
-// Listening to PORT
+// Listening to PORT 
 app.listen(PORT,() => console.log(`server started on port ${PORT}`));
