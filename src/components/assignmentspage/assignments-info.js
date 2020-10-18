@@ -12,11 +12,13 @@ function AssignmentInformation(){
     //Grow box based on the amount of courses
     return(
         <div  className="assignmentText">
-            <h3>{course}</h3>
-            <br></br>
-            <p>{assignment}</p>
-            <p>{dueDate}</p>
-            <br></br>
+            <div className="assignment-content">
+                <h3>{course}</h3>
+                <br></br>
+                <p>{assignment}</p>
+                <p>{dueDate}</p>
+                <br></br>
+            </div>
         </div>
     )
 }
