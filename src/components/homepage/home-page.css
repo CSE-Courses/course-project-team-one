@@ -60,6 +60,9 @@
   height: 50px;
   font-size: 20px;
   border-radius: 20px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
 }
 
 .select {

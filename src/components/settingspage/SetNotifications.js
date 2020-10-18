@@ -7,11 +7,11 @@ function setNotifications(){
 
       };
     return(
-        <div className="settingsText">
-            <h3>Update you on what classes you have</h3>
-            <form>
-            <div className="select">
-                <select name="class-select" className="filter-class">
+        <div className="settingsBody">
+            <h3 className = "settings-q1">Update you on what classes you have</h3>
+            <form >
+            <div >
+                <select className="settings-form1" name="settings-select">
                     <option onSelect={updateNotification()}>Select time</option>
                     <option onSelect={updateNotification()}>Never</option>
                     <option onSelect={updateNotification()}>1 hour before</option>
@@ -22,10 +22,10 @@ function setNotifications(){
                 </select>
             </div>
         </form>
-            <h3>Update you on assignment due dates</h3>
-            <form>
-            <div className="select">
-                <select name="class-select" className="filter-class">
+            <h3 className ="settings-q">Update you on assignment due dates</h3>
+            <form >
+            <div >
+                <select className="settings-form" name="settings-select">
 
                     <option onSelect={updateNotification()}>Select time</option>
                     <option onSelect={updateNotification()}>Never</option>
@@ -36,7 +36,7 @@ function setNotifications(){
                 </select>
             </div>
         </form>
-        <select name="ingredients[]" id="ingredients" multiple="multiple">
+        <select className="easter-egg"name="ingredients[]" id="ingredients" multiple="multiple">
     <option value="cheese">Cheese</option>
     <option value="tomatoes">Tomatoes</option>
     <option value="mozarella">Mozzarella</option>
