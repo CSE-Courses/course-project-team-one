@@ -15,6 +15,9 @@ import LoginPage from './components/loginpage/login-page';
 import Announcementpage from './components/notificationspage/Announcement';
 import Deadlinepage from './components/notificationspage/Deadline';
 
+import Submission from './components/gradespage/submission';
+import HW from './components/gradespage/HW';
+import RegradeRequest from './components/gradespage/regrade';
 
 function App() {
 
@@ -34,6 +37,10 @@ function App() {
             <Route path ="/login" exact component={LoginPage}/>
             <Route path ="/announcements" exact component={Announcementpage}/>
             <Route path ="/deadlines" exact component={Deadlinepage}/>
+
+            <Route path ="/HW" exact component={HW}/>
+            <Route path ="/submission" exact component={Submission}/>
+            <Route path ="/regrade" exact component={RegradeRequest}/>
 
           </Switch>
         </Router>

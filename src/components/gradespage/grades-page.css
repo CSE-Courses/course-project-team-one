@@ -18,6 +18,9 @@
   color:white;
   font-size: 20px;
   font-weight: lighter;
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
 }
 
 .gradestable{
@@ -27,6 +30,18 @@
   justify-content: center;
   flex-flow: wrap;
 }
+.gradesinput{
+  width:600px;
+  height:200px;
+  color:grey;
+  font-size: 20px;
+  font-weight: lighter;
+  display: flex;
+  text-align: inherit;
+  justify-content: center;
+  flex-flow: wrap;
+}
+
 /*.grades-header {
     font-size: 20px;
     margin-top: 40px;
