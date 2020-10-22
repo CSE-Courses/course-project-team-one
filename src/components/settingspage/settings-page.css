@@ -1,0 +1,129 @@
+.settings-header {
+    font-size: 20px;
+    margin-top: 40px;
+    color:white;
+    display: flex;
+    justify-content: center;
+  }
+
+  .settingsBody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: wrap;
+  }
+
+  .settings {
+    color: #7492ed;
+    background-color:  #d6eaff;
+    box-shadow: 10px 10px 30px black;
+    border-radius: 40px;
+    margin-top: 100px;
+    width:700px;
+    height:500px;
+    font-family: "Poppins", sans-serif;
+  }
+ 
+  .settings-options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: wrap;
+  }
+
+  .settingsBody{
+    color: #7492ed;
+    background-color:  #d6eaff;
+    box-shadow: 10px 10px 30px black;
+    border-radius: 40px;
+    display: flex;
+    justify-content: left;
+    flex-direction: wrap;
+    flex-flow: wrap;
+    width: 700px;
+    height: 500px;
+    margin-top: 20px;
+  }
+
+  .settings-q, .settings-q1{
+    margin-left: 30px;
+    font-weight: 775;
+    
+  }
+  .settings-q1{
+    margin-top: 30px;
+    margin-bottom: -80px;
+  }
+
+  .settings-q{
+    margin-bottom: -60px;
+  }
+
+  .settings-form, .settings-form1, .easter-egg{
+    margin-left: 30px;
+    margin-bottom: 40px;
+    width: 600px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 20px;
+    
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+  }
+
+  select {
+    outline: 0;
+    border: 0 !important;
+    color: #7492ed;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    width: 600px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 20px;
+  }
+
+  .settings-form1{
+    margin-bottom: -80px;
+  }
+
+  .settings-form{
+    margin-top: -10px;
+  }
+
+  .backhome{
+    border:none;
+    border-radius: 50px;
+    height: 80px;
+    width: 80px;
+    margin-left: 190px;
+    margin-top: 70px;
+    background: white;
+    color:#7492ed;
+  }
+  
+
+/* Mobile */
+@media(max-width:425px){
+
+  .backhome{
+    margin-left: 20px;
+    margin-top: 30px;
+  }
+
+  .settings-options{
+  }
+
+  .settingsBody{
+    width: 300px;
+    font-size: 15px;
+  }
+
+  .settings-form, .settings-form1{
+    width: 200px;
+  }
+  
+
+
+}

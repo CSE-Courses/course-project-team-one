@@ -1,0 +1,144 @@
+.layout{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-flow: wrap;
+}
+
+
+.home-button {
+    width: 200px;
+    height: 200px;
+    border-radius: 20%;
+    margin: 20px;
+    background: #7492ed;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    box-shadow: 10px 5px 40px black;
+    border: none;
+}
+
+.home-buttons {
+    margin-top: 70px;
+    width: 750px;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    align-content: center;
+  }
+
+.notify{
+    border-radius: 50%;
+    background-color: #c40202;
+    width: 50px;
+    height: 50px;
+    margin-left: 82%;
+    margin-top: -20%;
+    font-size: 20px;
+    display:flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  .notify-text{
+    font-size: 20px;
+    margin-top:15px;
+  }
+
+  .home-text{
+    font-size: 20px;
+    font-weight: lighter;
+  }
+
+ select {
+  outline: 0;
+  border: 0 !important;
+  color: #7492ed;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  width: 600px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 20px;}
+
+.select {
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Arrow */
+.select::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  background: #7492ed;
+  cursor: pointer;
+  color: white;
+}
+
+
+  /*Buttons */
+  .home-button {
+      width: 200px;
+      height: 200px;
+      border-radius: 20%;
+      margin: 20px;
+      background: #7492ed;
+      color: white;
+      font-family: "Poppins", sans-serif;
+      box-shadow: 10px 5px 40px black;
+      border: none;
+  }
+
+  .home-icon{
+    font-size: 100px;
+  }
+
+  form {
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .backhome{
+    border:none;
+    border-radius: 50px;
+    height: 100px;
+    width:100px;
+    margin-left: 150px;
+    background: white;
+    color:#7492ed;
+  }
+
+  /* MOBILE */
+  @media(max-width:425px){
+    .home-button{
+        width: 100px;
+        height: 100px;
+        margin: 15px;
+    }
+    .notify{
+      width:25px;
+      height: 25px;
+      margin-left: 20%;
+      margin-top: -5%;
+      position: absolute;
+    }
+    
+    .notify-text{
+      margin-top: 7px;
+    }
+    
+    .notify-text, .home-text{
+      font-size: 10px;
+    }
+    .home-icon{
+      font-size: 50px;
+    }
+
+    
+  }

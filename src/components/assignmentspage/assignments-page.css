@@ -1,0 +1,42 @@
+.assignments-header {
+    font-size: 20px;
+    margin-top: 40px;
+    color:white;
+    display: flex;
+    justify-content: center;
+  }
+
+  .assignments {  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: wrap;
+  }
+
+  .assignmentText{
+    display: flex;
+    flex-flow: column;
+    color:  #7492ed;
+    font-family: "Poppins", sans-serif;   
+    margin-top: 15px;
+    text-align: left;
+    background-color:  #d6eaff;
+    box-shadow: 10px 10px 30px black;
+    border-radius: 40px;
+    width:700px;
+    height:200px;
+}
+
+.assignment-content{
+  margin-left: 40px;
+  margin-top: 30px;
+}
+
+/* Mobile */
+@media(max-width:425px){
+
+  .assignmentText{
+    width: 300px;
+  }
+
+}
