@@ -8,11 +8,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 function NotificationsPage() {
   const data = useLocation().data;
   //If incorrect login go back to login, otherwise stay
-  if(data != null){
-    if (!(data.username == "student1" && data.password == "password")){
-      return(<Redirect to= "/login"></Redirect>)
-    }
-   }
+  
    if(data == null){
     return(<Redirect to= "/login"></Redirect>)
    }
