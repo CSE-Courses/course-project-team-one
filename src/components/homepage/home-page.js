@@ -18,8 +18,8 @@ function HomePage() {
   }, []);
 
   const getUsers = () =>{
-        axios.get('http://localhost:5000/users').then(res => setUsers(res.data));
-      //axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
+        //axios.get('http://localhost:5000/users').then(res => setUsers(res.data));
+      axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
   }
 
    //If incorrect login go back to login, otherwise stay

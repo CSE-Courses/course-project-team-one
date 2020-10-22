@@ -17,8 +17,8 @@ const[Classes, setClasses] = useState([]);
     }, []);
 
 const getClasses = () =>{
-    axios.get('http://localhost:5000/classes').then(res => setClasses(res.data));
-    //axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
+    //axios.get('http://localhost:5000/classes').then(res => setClasses(res.data));
+    axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setClasses(res.data)); //Use this one for public deployment
 }
 
 
