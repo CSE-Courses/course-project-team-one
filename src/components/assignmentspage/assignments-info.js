@@ -41,11 +41,26 @@ const getClasses = () =>{
                 <div  className="assignmentText">
                     <div className="assignment-content">
                         <h3>{Classes[0].className}</h3>
+                        <p>{Classes[0].assignments[0]}{Classes[0].assignments[1]}</p>
                         <br></br>
-                        <p>{dueDate}</p>
                         <br></br>
+                        <h3>{Classes[1].className}</h3>
+                        <p>{Classes[1].assignments[0]}</p>
+                        <br></br>
+                        <br></br>
+                        <h3>{Classes[2].className}</h3>
+                        <p>{Classes[2].assignments[0]}</p>
+                        <br></br>
+                        <br></br>
+                        <h3>{Classes[3].className}</h3>
+                        <p>{Classes[3].assignments[0]}</p>
+                        <br></br>
+                        <br></br>
+                        <h3>{Classes[4].className}</h3>
+                        <p>{Classes[4].assignments[0]}</p>
                     </div>
                 </div>
+                
             )
         }
     
