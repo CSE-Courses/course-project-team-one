@@ -10,11 +10,12 @@ const Notibuttons = ({icon,text, notify, link}) =>{
     const data = useLocation().data;
     const username = data.username;
     const password = data.password;
+    const currentClass = data.currentClass;
     if(notify > 0){
         
             if(link === "/announcements"){
                 return(
-                    <Link to ={{pathname: "/announcements", data:{username,password}}}>
+                    <Link to ={{pathname: "/announcements", data:{username,password, currentClass}}}>
                         <button className="home-button">
                         <div className="notify"><br/><text className="notify-text">{notify}</text></div>
                         <FontAwesomeIcon className = "home-icon" icon = {icon} /><br/><br/>
@@ -27,7 +28,7 @@ const Notibuttons = ({icon,text, notify, link}) =>{
         
             if(link === "/deadlines"){
                 return( 
-                    <Link to ={{pathname: "/deadlines", data:{username,password}}}>
+                    <Link to ={{pathname: "/deadlines", data:{username,password, currentClass}}}>
                         <button className="home-button">
                         <div className="notify"><br/><text className="notify-text">{notify}</text></div>
                         <FontAwesomeIcon className="home-icon" icon = {icon}/><br/><br/>
