@@ -4,13 +4,17 @@ import {BrowserRouter as Router, Route, Switch, Link, Redirect} from "react-rout
 import './home-page.css';
 import '../icons/icons'
 
-const Homebuttons = ({icon,text, notify, link, username, password}) =>{
-    console.log(username+ "fhewoihfiewhoifhoiweh");
-    notify = {notify}.notify; 
+const Homebuttons = ({icon,text, notify, link, username, password, currentClass}) =>{
+    if(notify.length % 2 == 0){
+        notify = 0;
+    }
+    else{
+        notify = 3;
+    }
     if(notify > 0){
         if(link == "/assignments"){
             return(
-                <Link to={{pathname: "/assignments", data:{username,password}}}>
+                <Link to={{pathname: "/assignments", data:{username,password, currentClass}}}>
                     <button className="home-button">
                     <div className="notify"><br/><text className="notify-text">{notify}</text></div>
                     <FontAwesomeIcon className = "home-icon" icon = {icon} /><br/><br/>
@@ -21,7 +25,7 @@ const Homebuttons = ({icon,text, notify, link, username, password}) =>{
         }
         if(link == "/grades"){
             return(
-                <Link to={{pathname: "/grades", data:{username,password}}}>
+                <Link to={{pathname: "/grades", data:{username,password, currentClass}}}>
                     <button className="home-button">
                     <div className="notify"><br/><text className="notify-text">{notify}</text></div>
                     <FontAwesomeIcon className = "home-icon" icon = {icon} /><br/><br/>
@@ -32,7 +36,7 @@ const Homebuttons = ({icon,text, notify, link, username, password}) =>{
         }
         if(link == "/discussion"){
             return(
-                <Link to={{pathname: "/discussion", data:{username,password}}}>
+                <Link to={{pathname: "/discussion", data:{username,password, currentClass}}}>
                     <button className="home-button">
                     <div className="notify"><br/><text className="notify-text">{notify}</text></div>
                     <FontAwesomeIcon className = "home-icon" icon = {icon} /><br/><br/>
@@ -43,7 +47,7 @@ const Homebuttons = ({icon,text, notify, link, username, password}) =>{
         }
         if(link == "/coursedocuments"){
             return(
-                <Link to={{pathname: "/coursedocuments", data:{username,password}}}>
+                <Link to={{pathname: "/coursedocuments", data:{username,password, currentClass}}}>
                     <button className="home-button">
                     <div className="notify"><br/><text className="notify-text">{notify}</text></div>
                     <FontAwesomeIcon className = "home-icon" icon = {icon} /><br/><br/>
@@ -54,7 +58,7 @@ const Homebuttons = ({icon,text, notify, link, username, password}) =>{
         }
         if(link == "/notifications"){
             return(
-                <Link to={{pathname: "/notifications", data:{username,password}}}>
+                <Link to={{pathname: "/notifications", data:{username,password, currentClass}}}>
                     <button className="home-button">
                     <div className="notify"><br/><text className="notify-text">{notify}</text></div>
                     <FontAwesomeIcon className = "home-icon" icon = {icon} /><br/><br/>
@@ -65,7 +69,7 @@ const Homebuttons = ({icon,text, notify, link, username, password}) =>{
         }
         if(link == "/settings"){
             return(
-                <Link to={{pathname: "/settings", data:{username,password}}}>
+                <Link to={{pathname: "/settings", data:{username,password, currentClass}}}>
                     <button className="home-button">
                     <div className="notify"><br/><text className="notify-text">{notify}</text></div>
                     <FontAwesomeIcon className = "home-icon" icon = {icon} /><br/><br/>
@@ -78,7 +82,7 @@ const Homebuttons = ({icon,text, notify, link, username, password}) =>{
     else{
         if(link == "/assignments"){
             return( 
-                <Link to={{pathname: "/assignments", data:{username,password}}}>
+                <Link to={{pathname: "/assignments", data:{username,password, currentClass}}}>
                     <button className="home-button">
                     <FontAwesomeIcon className="home-icon" icon = {icon}/><br/><br/>
                     <text className="home-text">{text}</text>
@@ -88,7 +92,7 @@ const Homebuttons = ({icon,text, notify, link, username, password}) =>{
         }
         if(link == "/grades"){
             return( 
-                <Link to={{pathname: "/grades", data:{username,password}}}>
+                <Link to={{pathname: "/grades", data:{username,password, currentClass}}}>
                     <button className="home-button">
                     <FontAwesomeIcon className="home-icon" icon = {icon}/><br/><br/>
                     <text className="home-text">{text}</text>
@@ -98,7 +102,7 @@ const Homebuttons = ({icon,text, notify, link, username, password}) =>{
         }
         if(link == "/discussion"){
             return( 
-                <Link to={{pathname: "/discussion", data:{username,password}}}>
+                <Link to={{pathname: "/discussion", data:{username,password, currentClass}}}>
                     <button className="home-button">
                     <FontAwesomeIcon className="home-icon" icon = {icon}/><br/><br/>
                     <text className="home-text">{text}</text>
@@ -108,7 +112,7 @@ const Homebuttons = ({icon,text, notify, link, username, password}) =>{
         }
         if(link == "/coursedocuments"){
             return( 
-                <Link to={{pathname: "/coursedocuments", data:{username,password}}}>
+                <Link to={{pathname: "/coursedocuments", data:{username,password, currentClass}}}>
                     <button className="home-button">
                     <FontAwesomeIcon className="home-icon" icon = {icon}/><br/><br/>
                     <text className="home-text">{text}</text>
@@ -118,7 +122,7 @@ const Homebuttons = ({icon,text, notify, link, username, password}) =>{
         }
         if(link == "/notifications"){
             return( 
-                <Link to={{pathname: "/notifications", data:{username,password}}}>
+                <Link to={{pathname: "/notifications", data:{username,password, currentClass}}}>
                     <button className="home-button">
                     <FontAwesomeIcon className="home-icon" icon = {icon}/><br/><br/>
                     <text className="home-text">{text}</text>
@@ -128,7 +132,7 @@ const Homebuttons = ({icon,text, notify, link, username, password}) =>{
         }
         if(link == "/settings"){
             return( 
-                <Link to={{pathname: "/settings", data:{username,password}}}>
+                <Link to={{pathname: "/settings", data:{username,password, currentClass}}}>
                     <button className="home-button">
                     <FontAwesomeIcon className="home-icon" icon = {icon}/><br/><br/>
                     <text className="home-text">{text}</text>

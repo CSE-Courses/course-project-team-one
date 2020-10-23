@@ -23,19 +23,20 @@ function Deadlinepage(){
 
   const username = data.username;
   const password = data.password;
+  const currentClass = data.currentClass;
 
   
   const link_assign_button ={
-    link_assign_button1 :     <Link to={{pathname:"/assignments", data:{username,password}}}><button className="link_assign_button">
+    link_assign_button1 :     <Link to={{pathname:"/assignments", data:{username,password, currentClass}}}><button className="link_assign_button">
       Assignment1
 </button></Link>,
- link_assign_button2 :     <Link to={{pathname:"/assignments", data:{username,password}}}><button className="link_assign_button">
+ link_assign_button2 :     <Link to={{pathname:"/assignments", data:{username,password, currentClass}}}><button className="link_assign_button">
  Assignment2
 </button></Link>,
   }
     return(
         <div>
-     <AppHeader username={username} password={password}/>     
+     <AppHeader username={username} password={password} currentClass={currentClass}/>     
      <div className="deadline-header">
         <header><h1>Deadline</h1></header>
       </div>
@@ -43,7 +44,7 @@ function Deadlinepage(){
       <script>
         document.write(Date());
 </script>
-        <Link to={{pathname:"/notifications", data:{username,password}}}><button className="backhome">
+        <Link to={{pathname:"/notifications", data:{username,password, currentClass}}}><button className="backhome">
         <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
     </button></Link>
 

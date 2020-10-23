@@ -13,6 +13,7 @@ function HomePage() {
   const[users, setUsers] = useState([]);
   const data = useLocation().data;
   var id = "";   //The unique id created in the backend
+  
 
   useEffect(() => {
     getUsers();
@@ -43,9 +44,9 @@ function HomePage() {
    //Correct login
   return (
       <div>
-        <AppHeader username={data.username} password={data.password}/> 
-        <ClassSelect id = {id}></ClassSelect>
-        <HomebuttonLayout username={data.username} password={data.password}></HomebuttonLayout>
+        <AppHeader username={data.username} password={data.password} currentClass={data.currentClass}/> 
+        <ClassSelect username={data.username} password={data.password} id = {id} classExist = ""></ClassSelect>
+        
       </div>
   );
  

@@ -9,14 +9,14 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const currentClass ="";
  
   //Reset values after click
   const reset = () => {
     setUsername("");
     setPassword("");
   }
-
+    
     return (
       <div className="login-body">
           <div className="login-bubble">
@@ -31,7 +31,7 @@ function LoginPage() {
                 <FontAwesomeIcon icon = "lock" size="2x"/>
                 <input classname="input" name="password" onChange={e => setPassword(e.target.value)} type="password" placeholder="  Password" value={password}></input></div>
                 <br></br><br></br><br></br>
-                <div className="button-div"><Link to={{pathname: "/", data:{username,password}}}><button onClick ={reset} className="button-login" >Login</button></Link></div>
+                <div className="button-div"><Link to={{pathname: "/", data:{username,password, currentClass}}}><button onClick ={reset} className="button-login" >Login</button></Link></div>
               </form>  
             </div>
           </div>
