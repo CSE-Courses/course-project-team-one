@@ -12,23 +12,25 @@ function HomePage() {
 
   const[users, setUsers] = useState([]);
   const data = useLocation().data;
+  var id = "";   //The unique id created in the backend
 
   useEffect(() => {
     getUsers();
   }, []);
 
   const getUsers = () =>{
-        //axios.get('http://localhost:5000/users').then(res => setUsers(res.data));
-      axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
+        axios.get('http://localhost:5000/users').then(res => setUsers(res.data));
+      //axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
   }
 
    //If incorrect login go back to login, otherwise stay
-   if(users.length > 0){
+   
+  if(users.length > 0){
     var correctInfo = false;
-    console.log(users.length);
     for(var index = 0; index < users.length; index++){
       if(users[index].username == data.username && users[index].password == data.password){
         correctInfo = true;
+        id = users[index]._id;
         break;
       }
     }
@@ -42,7 +44,7 @@ function HomePage() {
   return (
       <div>
         <AppHeader username={data.username} password={data.password}/> 
-        <ClassSelect username={data.username} password={data.password}></ClassSelect>
+        <ClassSelect id = {id}></ClassSelect>
         <HomebuttonLayout username={data.username} password={data.password}></HomebuttonLayout>
       </div>
   );
