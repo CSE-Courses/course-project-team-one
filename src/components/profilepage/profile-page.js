@@ -14,9 +14,7 @@ function ProfilePage() {
    
 
   
-  const username = data.username;
-  const password = data.password;
-  const currentClass = data.currentClass;
+  
 
   const[user, setUser] = useState([]);
   var correctUser;
@@ -40,6 +38,10 @@ function ProfilePage() {
     else if(data == null){
       return(<Redirect to= "/login"></Redirect>)
      }
+
+     const username = data.username;
+    const password = data.password;
+    const currentClass = data.currentClass;
 
     if(user.length > 0){
       var correctInfo = false;
@@ -67,9 +69,23 @@ function ProfilePage() {
           <div className="profile-bubble">
             <div className="icon-bubble"><FontAwesomeIcon icon = 'user' size = "5x"/></div>
             <div className="profile-contents">
-              <h1>{correctUser.username}</h1><br></br><br></br><br></br>
-              <h1>{correctUser.UBIT}</h1><br></br><br></br><br></br>
-              <h1>{correctUser.email}</h1>
+                <div className = "basic-info">
+                  <div className="smaller">
+                  <h1>Username: {correctUser.username}</h1><br></br><br></br><br></br>
+                  <h1>UBIT: {correctUser.UBIT}</h1><br></br><br></br><br></br>
+                  <h1>Email: {correctUser.email}</h1>
+                  </div>
+                  
+                </div>
+                <div className = "classes-info">
+                        <h1 className="bold">Your classes</h1><br></br><br></br><br></br>
+                    {correctUser.classes.map ((classes)=>
+                        <div>
+                          <h1>- {classes.class}</h1>
+                          <br></br>
+                        </div>
+                    )} 
+                </div>
               </div>
            
               <Link to={{pathname:"/login"}}>
