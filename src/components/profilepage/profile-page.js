@@ -19,7 +19,7 @@ function ProfilePage() {
   const currentClass = data.currentClass;
 
   const[user, setUser] = useState([]);
-
+  var correctUser;
 
   useEffect(() => {
     getUser();
@@ -37,9 +37,22 @@ function ProfilePage() {
         return (<h3></h3>);
     }
 
-    if(data == null){
+    else if(data == null){
       return(<Redirect to= "/login"></Redirect>)
      }
+
+    if(user.length > 0){
+      var correctInfo = false;
+      for(var index = 0; index < user.length; index++){
+        if(user[index].username == data.username && user[index].password == data.password){
+          correctInfo = true;
+          correctUser = user[index];
+        }
+      }
+      if(correctInfo == false){return(<Redirect to= "/login"></Redirect>)}
+    }
+
+    console.log(correctUser);
     return (
       
       <div>
@@ -54,11 +67,11 @@ function ProfilePage() {
           <div className="profile-bubble">
             <div className="icon-bubble"><FontAwesomeIcon icon = 'user' size = "5x"/></div>
             <div className="profile-contents">
-              <h1>Johnny AppleSeed</h1><br></br><br></br><br></br>
-              <h1>UBIT : 50220000 </h1><br></br><br></br><br></br>
-              <h1>Email : appleseed@buffalo.edu</h1>
+              <h1>{correctUser.username}</h1><br></br><br></br><br></br>
+              <h1>{correctUser.UBIT}</h1><br></br><br></br><br></br>
+              <h1>{correctUser.email}</h1>
               </div>
-              
+           
               <Link to={{pathname:"/login"}}>
                 <button className = "signout-button">Sign out</button>
               </Link>
