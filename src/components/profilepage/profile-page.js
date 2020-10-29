@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./profile-page.css";
 import {BrowserRouter as Router, Route, Switch, Link, Redirect, useLocation} from "react-router-dom";
 import AppHeader from '../appheaderpage/appheader';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import axios from 'axios';
 
 
 function ProfilePage() {
@@ -10,15 +11,35 @@ function ProfilePage() {
   const data = useLocation().data;
   //If incorrect login go back to login, otherwise stay
   
-   if(data == null){
-    return(<Redirect to= "/login"></Redirect>)
-   }
+   
 
   
   const username = data.username;
   const password = data.password;
   const currentClass = data.currentClass;
 
+  const[user, setUser] = useState([]);
+
+
+  useEffect(() => {
+    getUser();
+  },[]);
+
+
+  const getUser = () =>{
+        //axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
+        axios.get('http://localhost:5000/users/').then(res => {
+        setUser((res.data));
+        })
+  }
+
+    if(user.length == 0){
+        return (<h3></h3>);
+    }
+
+    if(data == null){
+      return(<Redirect to= "/login"></Redirect>)
+     }
     return (
       
       <div>
