@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState , useEffect} from "react";
 import "./coursedocuments-page.css";
 import {BrowserRouter as Router, Route, Switch, Link, Redirect, useLocation} from "react-router-dom";
 import AppHeader from '../appheaderpage/appheader'
@@ -7,8 +7,22 @@ import Logistics from "./courseDocumentsComponents/Logistics";
 import Syllabus from "./courseDocumentsComponents/Syllabus";
 import Slides from "./courseDocumentsComponents/Slides";
 import CourseDocInfo from "./courseDocumentsComponents/courseDocInfo";
+import axios from 'axios';
 
 function CourseDocumentsPage() {
+
+  const[classLinks, setClassLinks] = useState([]);
+
+  useEffect(() => {
+    getClasses();
+    }, []);
+
+const getClasses = () =>{
+    axios.get('http://localhost:5000/classes').then(res => setClassLinks(res.data));
+    //axios.get('https://ubwebapp-backend.herokuapp.com/classes/').then(res => setClasses(res.data)); //Use this one for public deployment
+  }
+
+  console.log(classLinks);
 
   const data = useLocation().data;
   //If incorrect login go back to login, otherwise stay
@@ -19,10 +33,17 @@ function CourseDocumentsPage() {
   const password = data.password;
   const currentClass = data.currentClass;
 
+
+
   var links = [["https://cse442.com/static_files/handouts/syllabus.pdf", "Syllabus"], ["https://cse442.com/static_files/slides/Lecture01.pdf", "Yeet"]];
   var links2 = [["https://cse442.com/static_files/handouts/syllabus.pdf", "Syllabus"], ["https://cse442.com/static_files/slides/Lecture01.pdf", "Yeet"],["https://cse442.com/static_files/slides/Lecture01.pdf", "Yeet"],["https://cse442.com/static_files/slides/Lecture01.pdf", "Yeet"]];
   var titles = [["Syllabus", links2], ["Slides", links], ["Yeet", links], ["Yeet", links2]];
 
+  if(classLinks.length < 1){
+    return(
+        <h3 className="Loading">Loading...</h3>
+    )
+  }
   return(
     <div>
       <AppHeader username={username} password={password} currentClass={currentClass}/>
