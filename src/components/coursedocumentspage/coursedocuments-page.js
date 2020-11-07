@@ -26,6 +26,12 @@ function CourseDocumentsPage() {
   return(
     <div>
       <AppHeader username={username} password={password} currentClass={currentClass}/>
+      
+      <Link to={{pathname:"/", data:{username,password, currentClass}}}>
+            <button className="backhome-profile">
+            <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
+            </button></Link>
+
       <div className ="courseDocumentsPage">
           <h1 className="header">Course Documents</h1>
           <div className="docBubbles">

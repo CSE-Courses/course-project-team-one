@@ -1,6 +1,7 @@
 .courseDocumentsPage{
     display: flex;
     flex-direction: column;
+    flex-flow: wrap;
     align-items: center;
     justify-content: center;
 }
@@ -25,12 +26,22 @@
   .docBubbles{
       margin-top: 40px;
       display: flex;
-      flex-direction: row;
       flex-flow: wrap;
-      width: 1400px;
+      width: 1500px;
+      margin-left: 80px;
   }
 
   .header{
       color: white;
-      margin-top: 50px;
   }
+
+    /* MOBILE */
+    @media(max-width:425px){
+        .oneDocBubble{
+            width: 300px;
+        }
+        .docBubbles{
+            margin-right: 90px;
+        }
+        
+      }
