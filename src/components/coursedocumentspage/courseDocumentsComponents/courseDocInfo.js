@@ -5,7 +5,7 @@ const CourseDocInfo = ({titles,links}) =>{
         <div className="oneDocBubble">
             <div className="docTitle">{titles}</div>
             {links.map ((links)=>
-                                <div className="docLinks"><a href={links[0]}>{links[1]}</a></div>
+                                <div className="docLinks"><a href={links[0]} target="_blank">{links[1]}</a></div>
                             )} 
         </div>
     );
