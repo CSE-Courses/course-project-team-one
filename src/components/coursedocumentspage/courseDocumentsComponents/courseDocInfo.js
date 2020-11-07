@@ -1,6 +1,7 @@
 import React from "react";
 
 const CourseDocInfo = ({titles,links}) =>{
+    console.log(titles);
     return(
         <div className="oneDocBubble">
             <div className="docTitle">{titles}</div>

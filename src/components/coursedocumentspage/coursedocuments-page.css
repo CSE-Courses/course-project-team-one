@@ -20,7 +20,8 @@
   }
 
   .docTitle{
-      font-size: 40px;
+      font-size: 25px;
+      color: #1586C6;
   }
 
   .docBubbles{
@@ -33,6 +34,9 @@
 
   .header{
       color: white;
+      width: 500px;
+      justify-content: center;
+      text-align: center;
   }
 
   .Loading{

@@ -22,8 +22,6 @@ const getClasses = () =>{
     //axios.get('https://ubwebapp-backend.herokuapp.com/classes/').then(res => setClasses(res.data)); //Use this one for public deployment
   }
 
-  console.log(classLinks);
-
   const data = useLocation().data;
   //If incorrect login go back to login, otherwise stay
    if(data == null){
@@ -33,7 +31,7 @@ const getClasses = () =>{
   const password = data.password;
   const currentClass = data.currentClass;
 
-
+ 
 
   var links = [["https://cse442.com/static_files/handouts/syllabus.pdf", "Syllabus"], ["https://cse442.com/static_files/slides/Lecture01.pdf", "Yeet"]];
   var links2 = [["https://cse442.com/static_files/handouts/syllabus.pdf", "Syllabus"], ["https://cse442.com/static_files/slides/Lecture01.pdf", "Yeet"],["https://cse442.com/static_files/slides/Lecture01.pdf", "Yeet"],["https://cse442.com/static_files/slides/Lecture01.pdf", "Yeet"]];
@@ -44,28 +42,36 @@ const getClasses = () =>{
         <h3 className="Loading">Loading...</h3>
     )
   }
-  return(
-    <div>
-      <AppHeader username={username} password={password} currentClass={currentClass}/>
-      
-      <Link to={{pathname:"/", data:{username,password, currentClass}}}>
-            <button className="backhome-profile">
-            <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
-            </button></Link>
-
-      <div className ="courseDocumentsPage">
-          <h1 className="header">Course Documents</h1>
-          <div className="docBubbles">
-            {titles.map ((titles)=>
-                                  <div>
-                                     <CourseDocInfo titles={titles[0]} links={titles[1]}></CourseDocInfo>
-                                  </div>
-                              )} 
-          </div>
+  else{
+    var courseLinks;
+    for(var x = 0; x < classLinks.length; x++){
+      if(currentClass == classLinks[x].className){
+        courseLinks = classLinks[x].courseDocuments;
+      }
+    }
+    return(
+      <div>
+        <AppHeader username={username} password={password} currentClass={currentClass}/>
+        
+        <Link to={{pathname:"/", data:{username,password, currentClass}}}>
+              <button className="backhome-profile">
+              <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
+              </button></Link>
+  
+        <div className ="courseDocumentsPage">
+            <h1 className="header">{currentClass} Course Documents</h1>
+            <div className="docBubbles">
+              {courseLinks.map ((sections)=>
+                                    <div>
+                                       <CourseDocInfo titles={sections.section[0]} links={sections.section[1]}></CourseDocInfo>
+                                    </div>
+                                )} 
+            </div>
+        </div>
       </div>
-    </div>
-  );
-
+    );
+  }
+  
   }
   
   export default CourseDocumentsPage;
