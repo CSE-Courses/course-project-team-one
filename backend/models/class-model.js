@@ -8,7 +8,8 @@ const classSchema = new Schema({
     //data: {type: subSchema default: {}}
     grade: {type : Number},
     attendance: {type : Boolean},
-    meetingTime: {type: String}
+    meetingTime: {type: String},
+    courseDocuments: {type: Array}
 })
 const Class = mongoose.model('Class', classSchema);
 
