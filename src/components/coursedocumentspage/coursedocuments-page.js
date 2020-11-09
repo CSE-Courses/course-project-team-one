@@ -3,9 +3,6 @@ import "./coursedocuments-page.css";
 import {BrowserRouter as Router, Route, Switch, Link, Redirect, useLocation} from "react-router-dom";
 import AppHeader from '../appheaderpage/appheader'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import Logistics from "./courseDocumentsComponents/Logistics";
-import Syllabus from "./courseDocumentsComponents/Syllabus";
-import Slides from "./courseDocumentsComponents/Slides";
 import CourseDocInfo from "./courseDocumentsComponents/courseDocInfo";
 import axios from 'axios';
 
@@ -67,6 +64,7 @@ const getClasses = () =>{
                                     </div>
                                 )} 
             </div>
+            <div className={currentClass == 'CSE421: Operating Systems' ? 'Noti' : ''}><p1>These links are only available if you are actually enrolled in the class</p1></div>
         </div>
       </div>
     );

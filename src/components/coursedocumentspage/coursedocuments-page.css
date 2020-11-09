@@ -25,7 +25,7 @@
   }
 
   .docBubbles{
-      margin-top: 40px;
+      margin-top: 30px;
       display: flex;
       flex-flow: wrap;
       width: 1500px;
@@ -37,6 +37,7 @@
       width: 500px;
       justify-content: center;
       text-align: center;
+      margin-top: -20px;
   }
 
   .Loading{
@@ -44,6 +45,20 @@
       justify-content: center;
       align-items: center;
       margin-left: 800px;
+  }
+
+  .Noti{
+      background-color:  #1D5C80;
+      color: white;
+      width: 100%;
+      bottom: 0;
+      position: fixed;
+      height: 40px;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      font-style: italic;
   }
 
     /* MOBILE */
@@ -54,5 +69,7 @@
         .docBubbles{
             margin-right: 90px;
         }
+
+        .header{margin-top: 0px;}
         
       }
