@@ -64,7 +64,7 @@ const getClasses = () =>{
                                     </div>
                                 )} 
             </div>
-            <div className={currentClass == 'CSE421: Operating Systems' ? 'Noti' : ''}><p1>These links are only available if you are actually enrolled in the class</p1></div>
+            <div className={currentClass == 'CSE421: Operating Systems' ? 'Noti' : 'hidden'}><p1>These links are only available if you are actually enrolled in the class</p1></div>
         </div>
       </div>
     );
