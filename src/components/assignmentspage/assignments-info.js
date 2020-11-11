@@ -22,12 +22,6 @@ const getClasses = () =>{
 }
 
 
-
-
-    //const course = 
-   // const assignment = "Assignment: Entire project"
-    const dueDate = "Due: Yesterday!!!";
-    const numOfAssignments = 0;
     //Check to see if there is anything there
     //For every assignment skip about 50 pixels and placce the assignment and grade per course
     //Grow box based on the amount of courses
@@ -45,11 +39,14 @@ const getClasses = () =>{
                     selectedClass = i;
                 }
             }
+
             return(
                 <div  className="assignmentText">
                     <div className="assignment-content">
                         <h3>{Classes[selectedClass].className}</h3>
-                        <p>{Classes[selectedClass].assignments[0]}</p>
+                        {Classes[selectedClass].assignments.map((assignment) => 
+                        <p>{assignment}</p>
+                        )}
                         <br></br>
                         <br></br>
                     </div>
