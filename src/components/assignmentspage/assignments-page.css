@@ -26,6 +26,29 @@
     width:700px;
     height:450px;
 }
+.assignmentName{
+  display: flex;
+  flex-flow: column;
+  color:  #b5c3ee;
+  font-family: "Poppins", sans-serif;   
+  margin-top: 15px;
+  text-align: left;
+  background-color:  #d6eaff;
+  box-shadow: 10px 10px 30px black;
+  border-radius: 40px;
+  width:400px;
+  height:450px;
+}
+.assignmentTextDueDate{
+  display: flex;
+  flex-flow: column;
+  color:  #aa0000c0;
+  font-family: "Poppins", sans-serif;   
+  margin-top: 15px;
+  text-align: left;
+  background-color:  #d6eaff;
+
+}
 
 .assignment-content{
   margin-left: 40px;
