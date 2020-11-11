@@ -17,6 +17,7 @@ import { findAllByTitle } from '@testing-library/react';
 }*/
 function GradesPage() {
   const data = useLocation().data;
+  
   //const hw1 = 
   //If incorrect login go back to login, otherwise stay
   
