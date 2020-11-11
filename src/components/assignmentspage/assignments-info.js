@@ -10,22 +10,25 @@ function AssignmentInformation(){
     const data = useLocation().data;
 
 const[Classes, setClasses] = useState([]);
+const[ClassAssignments, setClassAssignments] = useState([]);
 
 
     useEffect(() => {
     getClasses();
+
     }, []);
 
 const getClasses = () =>{
     axios.get('http://localhost:5000/classes').then(res => setClasses(res.data));
     //axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
 }
-
-
+const getAssignments = () =>{
+    axios.get('http://localhost:5000/assignments').then(res => setClassAssignments(res.data));
+    //axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
+}
     //Check to see if there is anything there
     //For every assignment skip about 50 pixels and placce the assignment and grade per course
     //Grow box based on the amount of courses
-    
         if(Classes.length < 1){
             return(
                 <h3>Loading...</h3>
@@ -44,9 +47,16 @@ const getClasses = () =>{
                 <div  className="assignmentText">
                     <div className="assignment-content">
                         <h3>{Classes[selectedClass].className}</h3>
+                        <br></br>
                         {Classes[selectedClass].assignments.map((assignment) => 
-                        <p>{assignment}</p>
+                        <h4>{assignment[0]}</h4>
+
                         )}
+                        <div className="assignmentTextDueDate">
+                        {Classes[selectedClass].assignments.map((assignment) => 
+                        <h4>{assignment[1]}</h4>
+                        )}
+                        </div>
                         <br></br>
                         <br></br>
                     </div>
