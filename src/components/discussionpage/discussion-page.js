@@ -37,6 +37,7 @@ function DiscussionPage() {
                 <button className="discussion-convobutton">I missed class what was the homework?</button>
               </div>
             </div>
+            <div className="discussion-messages-container">
             <div className="discussion-messages">
                 <Message sender="jordan" text="Ok sorry" username={username}></Message>
                 <Message sender="devin" text="Shutup" username={username}></Message>
@@ -47,7 +48,12 @@ function DiscussionPage() {
                 <Message sender="jordan" text="Hello?" username={username}></Message>
                 <Message sender="jordan" text="I hate math how do you divide" username={username}></Message>
             </div>
-          </div>
+            <div className="discussion-sendbox">
+              <input className="discussion-input" placeholder=" message"></input>
+              <button className="discussion-send-button"><FontAwesomeIcon icon = 'arrow-up' size = "1x"/></button>
+            </div>
+            </div>
+            </div>
         </div>
       </div>
     );
