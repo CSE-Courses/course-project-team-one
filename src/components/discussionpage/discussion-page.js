@@ -3,6 +3,7 @@ import "./discussion-page.css";
 import {BrowserRouter as Router, Route, Switch, Link, Redirect, useLocation} from "react-router-dom";
 import AppHeader from'../appheaderpage/appheader';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import Message from './message';
 
 
 function DiscussionPage() {
@@ -37,7 +38,14 @@ function DiscussionPage() {
               </div>
             </div>
             <div className="discussion-messages">
-                <p1>Message</p1>
+                <Message sender="jordan" text="Ok sorry" username={username}></Message>
+                <Message sender="devin" text="Shutup" username={username}></Message>
+                <Message sender="jordan" text="Hello?" username={username}></Message>
+                <Message sender="jordan" text="I hate math how do you divide" username={username}></Message>
+                <Message sender="jordan" text="Ok sorry" username={username}></Message>
+                <Message sender="devin" text="Shutup" username={username}></Message>
+                <Message sender="jordan" text="Hello?" username={username}></Message>
+                <Message sender="jordan" text="I hate math how do you divide" username={username}></Message>
             </div>
           </div>
         </div>
