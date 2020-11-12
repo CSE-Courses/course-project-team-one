@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState}  from 'react';
 import "./discussion-page.css";
 import {BrowserRouter as Router, Route, Switch, Link, Redirect, useLocation} from "react-router-dom";
 import AppHeader from'../appheaderpage/appheader';
@@ -7,6 +7,9 @@ import Message from './message';
 
 
 function DiscussionPage() {
+
+  const [currText, setCurrText] = useState("");
+  const [currConvo, setCurrConvo] = useState([["devin", "Thanks!", "Office hours question"],["jordan", "I think 4", "Office hours question"],["devin", "What time are office hours today?", "Office hours question"], ["jordan", "I missed class today sorry", "I missed class what was the homework?"]]);
 
   const data = useLocation().data;
   //If incorrect login go back to login, otherwise stay
@@ -19,6 +22,17 @@ function DiscussionPage() {
   const username = data.username;
   const password = data.password;
   const currentClass = data.currentClass;
+
+  const sendMessage = (e) =>{
+    if (e.key === 'Enter') {
+      setCurrConvo([[username, e.target.value], ...currConvo]);
+      setCurrText("");
+    }
+  }
+  const sendMessageButton = (e) =>{
+      setCurrConvo([[username, currText], ...currConvo]);
+      setCurrText("");
+  }
 
     return (
       <div>
@@ -39,18 +53,13 @@ function DiscussionPage() {
             </div>
             <div className="discussion-messages-container">
             <div className="discussion-messages">
-                <Message sender="jordan" text="Ok sorry" username={username}></Message>
-                <Message sender="devin" text="Shutup" username={username}></Message>
-                <Message sender="jordan" text="Hello?" username={username}></Message>
-                <Message sender="jordan" text="I hate math how do you divide" username={username}></Message>
-                <Message sender="jordan" text="Ok sorry" username={username}></Message>
-                <Message sender="devin" text="Shutup" username={username}></Message>
-                <Message sender="jordan" text="Hello?" username={username}></Message>
-                <Message sender="jordan" text="I hate math how do you divide" username={username}></Message>
+              {currConvo.map ((mssg)=>
+                                       <Message sender={mssg[0]} text={mssg[1]} username={username}></Message>
+                                )} 
             </div>
             <div className="discussion-sendbox">
-              <input className="discussion-input" placeholder=" message"></input>
-              <button className="discussion-send-button"><FontAwesomeIcon icon = 'arrow-up' size = "1x"/></button>
+              <input className="discussion-input" placeholder=" message" onKeyDown={e => sendMessage(e)} onChange={e => setCurrText(e.target.value)} value={currText}></input>
+              <button className="discussion-send-button" onClick={e => sendMessageButton(e)}><FontAwesomeIcon icon = 'arrow-up' size = "1x"/></button>
             </div>
             </div>
             </div>

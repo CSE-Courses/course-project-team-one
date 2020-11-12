@@ -87,7 +87,7 @@
 .discussion-bubble{
   background-color: #1982FC;
   width: 90%;
-  height: 50px;
+  min-height: 50px;
   color: white;
   display: flex;
   align-items: center;
@@ -107,7 +107,7 @@
   background-color: 	#aeb9cc;
   margin-left: 10px;
   width: 90%;
-  height: 50px;
+  min-height: 50px;
   color: white;
   display: flex;
   align-items: center;
