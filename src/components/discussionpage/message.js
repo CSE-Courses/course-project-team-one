@@ -1,8 +1,11 @@
 import React from 'react';
 import "./discussion-page.css";
 
-function Message({sender, text, username}) {
+function Message({sender, text, username, selectedChat, actualChat}) {
 
+    if(actualChat != selectedChat){
+        return ("");
+    }
   
       return (
         <div className={sender == username ? 'discussion-text' : 'discussion-text-other'}>

@@ -8,8 +8,10 @@ import Message from './message';
 
 function DiscussionPage() {
 
+  const [currChats, setCurrChats] = useState(["Office hours question", "I missed class what was the homework?", "Need help understanding python"]);
+  const [selectedChat, setSelectedChat] = useState(currChats[0]);
   const [currText, setCurrText] = useState("");
-  const [currConvo, setCurrConvo] = useState([["devin", "Thanks!", "Office hours question"],["jordan", "I think 4", "Office hours question"],["devin", "What time are office hours today?", "Office hours question"], ["jordan", "I missed class today sorry", "I missed class what was the homework?"]]);
+  const [currConvo, setCurrConvo] = useState([["angelo", "Chill...", "Office hours question"], ["jordan", "Yes I'm sure, Angelo", "Office hours question"], ["angelo", "Are you sure?", "Office hours question"], ["devin", "Thanks!", "Office hours question"],["jordan", "I think 4", "Office hours question"],["devin", "What time are office hours today?", "Office hours question"], ["jordan", "I missed class today sorry", "I missed class what was the homework?"], ["jordan", "I can help you", "Need help understanding python"], ["devin", "Can someone help me understand python?", "Need help understanding python"]]);
 
   const data = useLocation().data;
   //If incorrect login go back to login, otherwise stay
@@ -25,13 +27,16 @@ function DiscussionPage() {
 
   const sendMessage = (e) =>{
     if (e.key === 'Enter') {
-      setCurrConvo([[username, e.target.value], ...currConvo]);
+      setCurrConvo([[username, e.target.value, selectedChat], ...currConvo]);
       setCurrText("");
     }
   }
   const sendMessageButton = (e) =>{
-      setCurrConvo([[username, currText], ...currConvo]);
+      setCurrConvo([[username, currText, selectedChat], ...currConvo]);
       setCurrText("");
+  }
+  const changeChat = (value) =>{
+    setSelectedChat(value.mssg);
   }
 
     return (
@@ -45,16 +50,15 @@ function DiscussionPage() {
             <div className="discussion-conversations-container">
               <div className="discussion-conversations">
                 <button className="discussion-convobuttonadd"><FontAwesomeIcon icon = 'plus' size = "2x"/></button>
-                <button className="discussion-convobutton">I need help with math</button>
-                <button className="discussion-convobutton">Are office hours cancelled?</button>
-                <button className="discussion-convobutton">I'm bored</button>
-                <button className="discussion-convobutton">I missed class what was the homework?</button>
+                {currChats.map ((mssg)=>
+                                  <button className={selectedChat === mssg ? 'selected-chat' : "discussion-convobutton"} onClick={e => changeChat({mssg}) }>{mssg}</button>
+                                )} 
               </div>
             </div>
             <div className="discussion-messages-container">
             <div className="discussion-messages">
               {currConvo.map ((mssg)=>
-                                       <Message sender={mssg[0]} text={mssg[1]} username={username}></Message>
+                                       <Message sender={mssg[0]} text={mssg[1]} username={username} selectedChat={mssg[2]} actualChat={selectedChat}></Message>
                                 )} 
             </div>
             <div className="discussion-sendbox">
