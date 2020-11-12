@@ -22,12 +22,25 @@ function DiscussionPage() {
     return (
       <div>
         <AppHeader username={username} password={password} currentClass ={currentClass}/>
-        <div className="discussions-header">
-          <header><h1>Discussions</h1></header>
-        </div>
         <Link to={{pathname:"/", data:{username,password, currentClass}}}><button className="backhome">
           <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
         </button></Link>
+        <div className= "discussion-everything">
+          <div className="discussion-container">
+            <div className="discussion-conversations-container">
+              <div className="discussion-conversations">
+                <button className="discussion-convobuttonadd"><FontAwesomeIcon icon = 'plus' size = "2x"/></button>
+                <button className="discussion-convobutton">I need help with math</button>
+                <button className="discussion-convobutton">Are office hours cancelled?</button>
+                <button className="discussion-convobutton">I'm bored</button>
+                <button className="discussion-convobutton">I missed class what was the homework?</button>
+              </div>
+            </div>
+            <div className="discussion-messages">
+                <p1>Message</p1>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

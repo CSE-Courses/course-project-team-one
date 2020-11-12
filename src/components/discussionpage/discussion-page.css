@@ -5,3 +5,58 @@
     display: flex;
     justify-content: center;
   }
+
+  .discussion-everything{
+    display: flex;
+    justify-content: center;
+  }
+
+  .discussion-container{
+    background-color: white;
+    width: 800px;
+    height: 500px;
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+  }
+
+  .discussion-conversations-container{
+    background-color: #0842B5;
+    opacity: .6;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 25%;
+    display: flex;
+  }
+
+  .discussion-conversations{
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .discussion-convobuttonadd{
+    width: 100%;
+    height: 60px;
+    border:none;
+    background-color: #0842B5;
+    color:white;
+    transition: .3s;
+}
+
+  .discussion-convobutton{
+      width: 100%;
+      height: 60px;
+      border:none;
+      background-color: #0842B5;
+      color:white;
+      transition: .3s;
+  }
+
+  .discussion-convobutton:hover{
+    background-color: #0E57E8;
+  }
+
+  .discussion-convobuttonadd:hover{
+    background-color: #0E57E8;
+  }
