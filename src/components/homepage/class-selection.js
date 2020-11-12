@@ -20,7 +20,7 @@ const ClassSelect = ({id, username, password}) => {
       const getUser = () =>{
           if(id != ""){
               //axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
-            axios.get('http://localhost:5000/users/' + id).then(res => {
+            axios.get('https://immense-island-74461.herokuapp.com/users/' + id).then(res => {
                 setUser((res.data).classes);
                 setClass((res.data).classes[0].class);
             })
