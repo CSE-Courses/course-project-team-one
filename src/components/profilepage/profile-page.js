@@ -17,13 +17,14 @@ function ProfilePage() {
   
   const username = data.username;
   const password = data.password;
+  const currentClass = data.currentClass;
 
     return (
       
       <div>
-        <AppHeader username={username} password={password}> </AppHeader>
+        <AppHeader username={username} password={password} currentClass={currentClass}> </AppHeader>
         
-          <Link to={{pathname:"/", data:{username,password}}}>
+          <Link to={{pathname:"/", data:{username,password, currentClass}}}>
             <button className="backhome-profile">
             <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
             </button></Link>

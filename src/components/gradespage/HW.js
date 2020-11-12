@@ -16,14 +16,15 @@ function HW(){
   
   const username = data.username;
   const password = data.password;
+  const currentClass = data.currentClass;
 
     return(
         <div>
-            <AppHeader username={username} password={password}/>
+            <AppHeader username={username} password={password} currentClass={currentClass}/>
             <div className="grades-header">
                 <header><h1>Score</h1></header>
             </div>
-            <Link to={{pathname:"/grades", data:{username,password}}}><button className="backhome">
+            <Link to={{pathname:"/grades", data:{username,password, currentClass}}}><button className="backhome">
           <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
         </button></Link>
         <text className="gradestext"><h2>Your Score: 75/90</h2></text>

@@ -1,20 +1,55 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import HomebuttonLayout from './homebutton-layout';
+import {BrowserRouter as Router, Route, Switch, Link, Redirect, useLocation} from "react-router-dom";
 
     
-const ClassSelect = ({username, password}) => {
-    return(
-        <form>
-            <div className="select">
-                <select name="class-select" className="filter-class">
-                    <option value="unselected">Select class</option>
-                    <option value="class-1">CSE 421-Introduction to Operating Systems</option>
-                    <option value="class-2">CSE442-Software Engineering</option>
-                    <option value="class-3">CSE426-Blockchain</option>
-                    <option value="class-4">DMS333-World Cinema</option>
-                </select>
+const ClassSelect = ({id, username, password}) => {
+    
+    const[user, setUser] = useState([]);
+    const [currentClass, setClass] = useState("");
+    //If returning to page off back arrow or header button
+    const data = useLocation().data;
+    var classExist = "";
+    classExist = data.currentClass;
+        useEffect(() => {
+            getUser();
+          }, [id]);
+
+
+      const getUser = () =>{
+          if(id != ""){
+              //axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
+            axios.get('http://localhost:5000/users/' + id).then(res => {
+                setUser((res.data).classes);
+                setClass((res.data).classes[0].class);
+            })
+          }
+        
+    }
+    const changeClass = e =>{
+        setClass(e.target.value);
+        console.log(currentClass);
+    }
+    console.log(currentClass);
+    if(id ==  ""){return(<header></header>);}
+    else {
+        return(
+            <div>
+                <form>
+                    <div className = "select">
+                        <select className="class-select" onChange={changeClass}>
+                            {user.map ((classes)=>
+                                <option value={classes.class}>{classes.class}</option>
+                            )} 
+                        </select>
+                    </div>
+                </form>
+                <HomebuttonLayout username={username} password={password} id = {id} currentClass = {currentClass}></HomebuttonLayout>
             </div>
-        </form>
-    )
+            
+        )
+    }
 }
 
 export default ClassSelect;
