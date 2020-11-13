@@ -19,11 +19,13 @@ const[ClassAssignments, setClassAssignments] = useState([]);
     }, []);
 
 const getClasses = () =>{
-    axios.get('http://localhost:5000/classes').then(res => setClasses(res.data));
+   // axios.get('http://localhost:5000/classes').then(res => setClasses(res.data));
+    axios.get('https://immense-island-74461.herokuapp.com/classes').then(res => setClasses(res.data));
     //axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
 }
 const getAssignments = () =>{
-    axios.get('http://localhost:5000/assignments').then(res => setClassAssignments(res.data));
+    //axios.get('http://localhost:5000/assignments').then(res => setClassAssignments(res.data));
+    axios.get('https://immense-island-74461.herokuapp.com/assignments').then(res => setClassAssignments(res.data));
     //axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
 }
     //Check to see if there is anything there
