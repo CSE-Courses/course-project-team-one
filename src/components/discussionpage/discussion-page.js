@@ -15,7 +15,7 @@ let socket;
 function DiscussionPage() {
 
   const [text, setText] = useState('');
-  const [convo, setConvo] = useState([["jordan", "Hey", "Office hours question"]]);  //Replacing currConvo
+  const [convo, setConvo] = useState([["robot", "Welcome to the chat! Please be respectful.", "Office hours question"]]);  //Replacing currConvo
 
   useEffect(() =>{
       socket=io('localhost:5000', {transports: ['websocket']});
@@ -77,22 +77,22 @@ function DiscussionPage() {
     return (
       <div>
         <AppHeader username={username} password={password} currentClass ={currentClass}/>
-        <Link to={{pathname:"/", data:{username,password, currentClass}}}><button className="backhome">
+        <Link to={{pathname:"/", data:{username,password, currentClass}}}><button className="backhome-discussion">
           <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
         </button></Link>
         <div className= "discussion-everything">
           <div className="discussion-container">
-            {/* <div className="discussion-conversations-container">
+            <div className="discussion-conversations-container">
               <div className="discussion-conversations">
                 <button className="discussion-convobuttonadd"><FontAwesomeIcon icon = 'plus' size = "2x"/></button>
                 {currChats.map ((mssg)=>
                                   <button className={selectedChat === mssg ? 'selected-chat' : "discussion-convobutton"} onClick={e => changeChat({mssg}) }>{mssg}</button>
                                 )} 
               </div>
-            </div> */}
+            </div>
             <div className="discussion-messages-container">
-            <Messagebubbles convo={convo} username={username}></Messagebubbles>
-            <Sendbox sendMessage={sendMessage} text={text} setText={setText} sendMessageButton={sendMessageButton}></Sendbox>
+            <Messagebubbles convo={convo} username={username} actualChat={selectedChat}></Messagebubbles>
+            <Sendbox sendMessage={sendMessage} text={text} setText={setText} sendMessageButton={sendMessageButton} selectedChat={selectedChat}></Sendbox>
             </div>
             </div>
         </div>
