@@ -24,9 +24,9 @@ function ProfilePage() {
   },[]);
 
 
-  const getUser = () =>{
-        //axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
-        axios.get('https://immense-island-74461.herokuapp.com/users/').then(res => {
+  const getUser = () =>{  
+        //'https://immense-island-74461.herokuapp.com/users/'
+        axios.get('http://localhost:5000/users/').then(res => {
         setUser((res.data));
         })
   }

@@ -20,8 +20,8 @@ function HomePage() {
   }, []);
 
   const getUsers = () =>{
-        //axios.get('http://localhost:5000/users').then(res => setUsers(res.data));
-        axios.get('https://immense-island-74461.herokuapp.com/users/').then(res => setUsers(res.data));
+        axios.get('http://localhost:5000/users').then(res => setUsers(res.data));
+        //axios.get('https://immense-island-74461.herokuapp.com/users/').then(res => setUsers(res.data));
       //axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
   }
 
