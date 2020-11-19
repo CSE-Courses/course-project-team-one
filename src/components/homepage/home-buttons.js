@@ -29,14 +29,14 @@ const Homebuttons = ({icon,text, notify, link, username, password, currentClass}
             <h3>Loading...</h3>
         )
     }else{     
-    const myClass = data.currentClass;
+    const myClass = currentClass
     var selectedClass;
     for(var i = 0; i < Classes.length;i++){
         if(Classes[i].className == myClass){
-            selectedClass = i;
+            selectedClass = i;  
         }
     }
-    if(Classes[selectedClass].assignments.length > 0){
+    if(selectedClass != null && Classes[selectedClass].assignments.length > 0){
         notify = Classes[selectedClass].assignments.length;
     }
     else{
