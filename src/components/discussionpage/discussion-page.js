@@ -7,6 +7,7 @@ import Message from './message';
 import io from 'socket.io-client';
 import Sendbox from './sendbox';
 import Messagebubbles from './messagebubbles';
+import axios from 'axios';
 
 let socket;
 
@@ -14,8 +15,43 @@ let socket;
 
 function DiscussionPage() {
 
+  const data = useLocation().data;
+  var currentClass = "";
+  if(data != null){currentClass= data.currentClass;}
+  
+  const [allClasses, setAllClasses] = useState([]); //All the classes pulled from backend...will verify right class later
   const [text, setText] = useState('');
-  const [convo, setConvo] = useState([["robot", "Welcome to the chat! Please be respectful.", "Office hours question"]]);  //Replacing currConvo
+  const [convo, setConvo] = useState([[]]);  //Replacing currConvo
+  const [currChats, setCurrChats] = useState([]);
+  const [selectedChat, setSelectedChat] = useState("");
+  const [classid, setClassid] = useState("");
+
+  const getClasses = () =>{
+    //'https://immense-island-74461.herokuapp.com/classes/'
+    axios.get('http://localhost:5000/classes/').then(res => {
+      setAllClasses(res.data);
+      })
+      
+  }
+ 
+  const getRooms = () => {
+    if(allClasses.length > 0){
+      for(var index = 0; index < allClasses.length; index++){
+        if(allClasses[index].className === currentClass){
+          setCurrChats(allClasses[index].rooms);
+          setConvo(allClasses[index].messages);
+          setClassid(allClasses[index]._id);
+        }
+      }
+    }
+  }
+
+  const getSelectedChat = () => {
+    if(currChats.length > 0){
+    setSelectedChat(currChats[0]);
+    }
+  }
+  
 
   useEffect(() =>{
       socket=io('localhost:5000', {transports: ['websocket']});
@@ -30,15 +66,19 @@ function DiscussionPage() {
   useEffect(() =>{
     socket.on('message', message =>{
       setConvo(convo => [message, ...convo]);
-    })
+    });
+    getClasses();
   }, []);
 
+  useEffect(() =>{
+    getRooms();
+  }, [allClasses]);
+
+  useEffect(() =>{
+    getSelectedChat();
+  }, [currChats]);
   
-
-  const [currChats, setCurrChats] = useState(["Office hours question", "I missed class what was the homework?", "Need help understanding python"]);
-  const [selectedChat, setSelectedChat] = useState(currChats[0]);
-
-  const data = useLocation().data;
+  
   //If incorrect login go back to login, otherwise stay
   
    if(data == null){
@@ -48,12 +88,14 @@ function DiscussionPage() {
   
   const username = data.username;
   const password = data.password;
-  const currentClass = data.currentClass;
 
   const sendMessage = (event) => {
     event.preventDefault();
 
     if(text){
+      axios.post('http://localhost:5000/classes/updatemessage/' + classid, {
+        messages: [[username, text, selectedChat], ...convo]
+      })
       socket.emit('send-message', [username, text, selectedChat]);
       setText("");
     }
@@ -72,8 +114,7 @@ function DiscussionPage() {
     setSelectedChat(value.mssg);
   }
 
-   console.log(convo);
-
+    console.log(classid);
     return (
       <div>
         <AppHeader username={username} password={password} currentClass ={currentClass}/>
