@@ -24,6 +24,7 @@ function DiscussionPage() {
   const [convo, setConvo] = useState([[]]);  //Replacing currConvo
   const [currChats, setCurrChats] = useState([]);
   const [selectedChat, setSelectedChat] = useState("");
+  const [classid, setClassid] = useState("");
 
   const getClasses = () =>{
     //'https://immense-island-74461.herokuapp.com/classes/'
@@ -39,7 +40,7 @@ function DiscussionPage() {
         if(allClasses[index].className === currentClass){
           setCurrChats(allClasses[index].rooms);
           setConvo(allClasses[index].messages);
-          console.log(allClasses[index]);
+          setClassid(allClasses[index]._id);
         }
       }
     }
@@ -92,6 +93,9 @@ function DiscussionPage() {
     event.preventDefault();
 
     if(text){
+      axios.post('http://localhost:5000/classes/updatemessage/' + classid, {
+        messages: [[username, text, selectedChat], ...convo]
+      })
       socket.emit('send-message', [username, text, selectedChat]);
       setText("");
     }
@@ -110,6 +114,7 @@ function DiscussionPage() {
     setSelectedChat(value.mssg);
   }
 
+    console.log(classid);
     return (
       <div>
         <AppHeader username={username} password={password} currentClass ={currentClass}/>

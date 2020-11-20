@@ -41,5 +41,17 @@ router.route('/update/:id').post((req, res) => {
     })
     .catch(err => res.status(400).json('Error: ' + err));
 });
+
+router.route('/updatemessage/:id').post((req, res) => {
+  Class.findById(req.params.id)
+    .then(classes => {
+      classes.messages = req.body.messages;
+      classes.save()
+        .then(() => res.json('Class updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
 module.exports = router;
   
