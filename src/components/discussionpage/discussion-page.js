@@ -122,7 +122,15 @@ function DiscussionPage() {
     console.log(classid);
     return (
       <div>
-        <div className={`modal-background modalVisible-${popUp}`}></div>
+        <div className={`modal-background modalVisible-${popUp}`}>
+          <div className='modal-rectangle'>
+            <p1 className="popup-titles">Subject</p1>
+            <input className="popup-subject"placeholder="Subject..."></input>
+            <p1 className="popup-titles">Ask your question</p1>
+            <input className="popup-question" placeholder="Question..."></input>
+            <button onClick = {e => popUpState()} className="popup-button">Done</button>
+          </div>
+        </div>
         <AppHeader username={username} password={password} currentClass ={currentClass}/>
         <Link to={{pathname:"/", data:{username,password, currentClass}}}><button className="backhome-discussion">
           <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
