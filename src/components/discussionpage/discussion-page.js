@@ -25,6 +25,7 @@ function DiscussionPage() {
   const [currChats, setCurrChats] = useState([]);
   const [selectedChat, setSelectedChat] = useState("");
   const [classid, setClassid] = useState("");
+  const [popUp, setPopUp] = useState(false);
 
   const getClasses = () =>{
     //'https://immense-island-74461.herokuapp.com/classes/'
@@ -50,6 +51,10 @@ function DiscussionPage() {
     if(currChats.length > 0){
     setSelectedChat(currChats[0]);
     }
+  }
+
+  const popUpState = () =>{
+    setPopUp(!popUp);
   }
   
 
@@ -117,6 +122,7 @@ function DiscussionPage() {
     console.log(classid);
     return (
       <div>
+        <div className={`modal-background modalVisible-${popUp}`}></div>
         <AppHeader username={username} password={password} currentClass ={currentClass}/>
         <Link to={{pathname:"/", data:{username,password, currentClass}}}><button className="backhome-discussion">
           <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
@@ -125,7 +131,7 @@ function DiscussionPage() {
           <div className="discussion-container">
             <div className="discussion-conversations-container">
               <div className="discussion-conversations">
-                <button className="discussion-convobuttonadd"><FontAwesomeIcon icon = 'plus' size = "2x"/></button>
+                <button className="discussion-convobuttonadd" onClick={e => popUpState()}><FontAwesomeIcon icon = 'plus' size = "2x"/></button>
                 {currChats.map ((mssg)=>
                                   <button className={selectedChat === mssg ? 'selected-chat' : "discussion-convobutton"} onClick={e => changeChat({mssg}) }>{mssg}</button>
                                 )} 
