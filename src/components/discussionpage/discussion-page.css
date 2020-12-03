@@ -35,6 +35,7 @@
   .discussion-conversations{
     margin-top: 20px;
     width: 100%;
+    overflow-y: auto;
   }
 
   .discussion-convobuttonadd{
@@ -53,6 +54,7 @@
       background-color: #0842B5;
       color:white;
       transition: .3s;
+      border-radius: 20px;
   }
 
   .discussion-convobutton:hover{
@@ -212,11 +214,13 @@
   margin-left: 10px;
   margin-top: 20px;
   margin-bottom: 5px;
+  color: white;
 }
 
 .popup-subject{
   width: 90%;
   margin-left: 10px;
+  padding-left: 12px;
 }
 
 .popup-question{

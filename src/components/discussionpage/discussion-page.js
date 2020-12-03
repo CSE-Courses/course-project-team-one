@@ -26,6 +26,8 @@ function DiscussionPage() {
   const [selectedChat, setSelectedChat] = useState("");
   const [classid, setClassid] = useState("");
   const [popUp, setPopUp] = useState(false);
+  const [popupSubject, setPopupSubject] = useState("");
+  const [popupQuestion, setPopupQuestion] = useState("");
 
   const getClasses = () =>{
     //'https://immense-island-74461.herokuapp.com/classes/'
@@ -55,6 +57,22 @@ function DiscussionPage() {
 
   const popUpState = () =>{
     setPopUp(!popUp);
+  }
+
+  const addConvo = () =>{
+    if(popupSubject.length > 0 && popupQuestion.length > 0){
+      setCurrChats([popupSubject, ...currChats]);
+      axios.post('http://localhost:5000/classes/updatemessage/' + classid, {
+        messages: [[username, popupQuestion, popupSubject], ...convo]
+      })
+      socket.emit('send-message', [username, popupQuestion, popupSubject]);
+      popUpState();
+    }
+    else if(popupQuestion.length === 0 && popupSubject.length === 0){
+      popUpState();
+    }
+    setPopupSubject("");
+    setPopupQuestion("");
   }
   
 
@@ -110,6 +128,9 @@ function DiscussionPage() {
     e.preventDefault();
 
     if(text){
+      axios.post('http://localhost:5000/classes/updatemessage/' + classid, {
+        messages: [[username, text, selectedChat], ...convo]
+      })
       socket.emit('send-message', [username, text, selectedChat]);
       setText("");
     }
@@ -125,10 +146,10 @@ function DiscussionPage() {
         <div className={`modal-background modalVisible-${popUp}`}>
           <div className='modal-rectangle'>
             <p1 className="popup-titles">Subject</p1>
-            <input className="popup-subject"placeholder="Subject..."></input>
+            <input className="popup-subject"placeholder="Subject..." onChange={e => setPopupSubject(e.target.value)} value={popupSubject}></input>
             <p1 className="popup-titles">Ask your question</p1>
-            <input className="popup-question" placeholder="Question..."></input>
-            <button onClick = {e => popUpState()} className="popup-button">Done</button>
+            <input className="popup-question" placeholder="Question..." onChange={e => setPopupQuestion(e.target.value)} value={popupQuestion}></input>
+            <button onClick = {e => addConvo()} className="popup-button">Done</button>
           </div>
         </div>
         <AppHeader username={username} password={password} currentClass ={currentClass}/>
