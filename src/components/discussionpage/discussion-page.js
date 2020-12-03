@@ -61,11 +61,13 @@ function DiscussionPage() {
 
   const addConvo = () =>{
     if(popupSubject.length > 0 && popupQuestion.length > 0){
-      setCurrChats([popupSubject, ...currChats]);
-      axios.post('http://localhost:5000/classes/updatemessage/' + classid, {
+      axios.post('http://localhost:5000/classes/updateroom/' + classid, {
+        rooms: [popupSubject, ...currChats],
         messages: [[username, popupQuestion, popupSubject], ...convo]
-      })
+      });
+      
       socket.emit('send-message', [username, popupQuestion, popupSubject]);
+      setCurrChats([popupSubject, ...currChats]);
       popUpState();
     }
     else if(popupQuestion.length === 0 && popupSubject.length === 0){
