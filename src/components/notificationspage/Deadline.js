@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Route, Switch, Link, Redirect, useLocation} fro
 import AppHeader from '../appheaderpage/appheader';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Document from './document'
-import moment from 'moment';
 
 function Deadlinepage(){
   const data = useLocation().data;
@@ -18,15 +17,6 @@ function Deadlinepage(){
   const password = data.password;
   const currentClass = data.currentClass;
 
-  
-  const link_assign_button ={
-    link_assign_button1 :     <Link to={{pathname:"/assignments", data:{username,password, currentClass}}}><button className="link_assign_button">
-      Assignment1
-</button></Link>,
- link_assign_button2 :     <Link to={{pathname:"/assignments", data:{username,password, currentClass}}}><button className="link_assign_button">
- Assignment2
-</button></Link>,
-  }
     return(
         <div>
      <AppHeader username={username} password={password} currentClass={currentClass}/>     
