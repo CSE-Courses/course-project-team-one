@@ -8,10 +8,12 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
+    const classname= req.body.classname;
     const classes = req.body.classes;
-    const deadline = req.body.deadline;
+    const message = req.body.message;
+    
 
-    const newNoti = new Noti({classes,deadline});
+    const newNoti = new Noti({classes,message,classname});
 
     newNoti.save()
         .then(()=> res.json('noti added!'))

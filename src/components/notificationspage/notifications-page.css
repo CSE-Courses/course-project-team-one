@@ -95,9 +95,11 @@ width: 50px;
   justify-content: center;
   align-items: center;
   flex-flow: column;
+  align-items: center;
+  flex-direction: wrap;
   width: 500px;
   height:fit-content;
-  margin-left: 500px;
+  margin-left: 900px;
   margin-right: 20px;
   margin-bottom: 10px;
   border-radius: 20px;
@@ -132,8 +134,12 @@ justify-content: center;
   color:#7492ed;
   display: flex;
   justify-content: center;
-margin-top: 40px;
-
+  align-items: center;
+  flex-direction: wrap;
+  margin-left: 1000px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  border-radius: 20px;
 }
 
 .Modal_button_close{
