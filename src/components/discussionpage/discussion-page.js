@@ -28,6 +28,7 @@ function DiscussionPage() {
   const [popUp, setPopUp] = useState(false);
   const [popupSubject, setPopupSubject] = useState("");
   const [popupQuestion, setPopupQuestion] = useState("");
+  const [deletePopup, setDeletepopup] = useState(false);
 
   const getClasses = () =>{
     //'https://immense-island-74461.herokuapp.com/classes/'
@@ -59,6 +60,10 @@ function DiscussionPage() {
     setPopUp(!popUp);
   }
 
+  const deletePopupState = () =>{
+    setDeletepopup(!deletePopup);
+  }
+
   const addConvo = () =>{
     if(popupSubject.length > 0 && popupQuestion.length > 0){
       axios.post('http://localhost:5000/classes/updateroom/' + classid, {
@@ -75,6 +80,33 @@ function DiscussionPage() {
     }
     setPopupSubject("");
     setPopupQuestion("");
+  }
+
+  const deleteMessages = () =>{
+    console.log(convo);
+    for(var x = 0; x < convo.length; x++){
+      if(convo[x][2] === selectedChat){
+        console.log("yup");
+        convo.splice(x,1);
+        deleteMessages();
+      }
+    }
+    console.log(convo);
+  }
+
+  const deleteChat = () =>{
+    var newChat = currChats;
+    var index = newChat.indexOf(selectedChat);
+    if(index !== -1){
+      newChat.splice(index,1);
+      deleteMessages();
+      getSelectedChat();
+    }
+    axios.post('http://localhost:5000/classes/updateroom/' + classid, {
+        rooms: currChats,
+        messages: convo
+      });
+    deletePopupState();
   }
   
 
@@ -142,18 +174,9 @@ function DiscussionPage() {
     setSelectedChat(value.mssg);
   }
 
-    console.log(classid);
+    console.log(convo);
     return (
       <div>
-        <div className={`modal-background modalVisible-${popUp}`}>
-          <div className='modal-rectangle'>
-            <p1 className="popup-titles">Subject</p1>
-            <input className="popup-subject"placeholder="Subject..." onChange={e => setPopupSubject(e.target.value)} value={popupSubject}></input>
-            <p1 className="popup-titles">Ask your question</p1>
-            <input className="popup-question" placeholder="Question..." onChange={e => setPopupQuestion(e.target.value)} value={popupQuestion}></input>
-            <button onClick = {e => addConvo()} className="popup-button">Done</button>
-          </div>
-        </div>
         <AppHeader username={username} password={password} currentClass ={currentClass}/>
         <Link to={{pathname:"/", data:{username,password, currentClass}}}><button className="backhome-discussion">
           <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
@@ -170,9 +193,27 @@ function DiscussionPage() {
             </div>
             <div className="discussion-messages-container">
             <Messagebubbles convo={convo} username={username} actualChat={selectedChat}></Messagebubbles>
-            <Sendbox sendMessage={sendMessage} text={text} setText={setText} sendMessageButton={sendMessageButton} selectedChat={selectedChat}></Sendbox>
+            <Sendbox sendMessage={sendMessage} text={text} setText={setText} sendMessageButton={sendMessageButton} selectedChat={selectedChat} deletePopupState={deletePopupState} convo={convo} username={username} selectedChat={selectedChat}></Sendbox>
             </div>
             </div>
+        </div>
+        <div className={`modal-background modalVisible-${popUp}`}>
+          <div className='modal-rectangle'>
+            <p1 className="popup-titles">Subject</p1>
+            <input className="popup-subject"placeholder="Subject..." onChange={e => setPopupSubject(e.target.value)} value={popupSubject}></input>
+            <p1 className="popup-titles">Ask your question</p1>
+            <input className="popup-question" placeholder="Question..." onChange={e => setPopupQuestion(e.target.value)} value={popupQuestion}></input>
+            <button onClick = {e => addConvo()} className="popup-button">Done</button>
+          </div>
+        </div>
+        <div className={`modal-background modalVisible-${deletePopup}`}>
+          <div className='modal-delete-rectangle'>
+            <p1 className="popup-delete-title">Are you sure you want to delete your conversation?</p1>
+            <div className="popup-delete-container">
+            <button className="popup-delete-button2" onClick={e => deletePopupState()}>No</button>
+              <button className="popup-delete-button1" onClick={e => deleteChat()}>Yes</button>
+            </div>
+          </div>
         </div>
       </div>
     );
