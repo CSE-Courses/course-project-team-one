@@ -5,8 +5,9 @@ const Schema = mongoose.Schema;
 
 const notiSchema = new Schema({
 
-  classes : { type : Array , "default" : []},
-  deadline:{type: Date}
+  classname: {type: String},
+  message:{type: String},
+classes : { type : Array , "default" : []}
 
 }, {
   timestamps: true,
