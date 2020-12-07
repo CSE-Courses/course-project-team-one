@@ -81,6 +81,33 @@ function DiscussionPage() {
     setPopupSubject("");
     setPopupQuestion("");
   }
+
+  const deleteMessages = () =>{
+    console.log(convo);
+    for(var x = 0; x < convo.length; x++){
+      if(convo[x][2] === selectedChat){
+        console.log("yup");
+        convo.splice(x,1);
+        deleteMessages();
+      }
+    }
+    console.log(convo);
+  }
+
+  const deleteChat = () =>{
+    var newChat = currChats;
+    var index = newChat.indexOf(selectedChat);
+    if(index !== -1){
+      newChat.splice(index,1);
+      deleteMessages();
+      getSelectedChat();
+    }
+    // axios.post('http://localhost:5000/classes/updateroom/' + classid, {
+    //     rooms: currChats,
+    //     messages: convo
+    //   });
+    deletePopupState();
+  }
   
 
   useEffect(() =>{
@@ -183,7 +210,7 @@ function DiscussionPage() {
             <p1 className="popup-delete-title">Are you sure you want to delete your conversation?</p1>
             <div className="popup-delete-container">
             <button className="popup-delete-button2" onClick={e => deletePopupState()}>No</button>
-              <button className="popup-delete-button1">Yes</button>
+              <button className="popup-delete-button1" onClick={e => deleteChat()}>Yes</button>
             </div>
           </div>
         </div>
