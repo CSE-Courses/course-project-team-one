@@ -271,3 +271,61 @@
   background-color: #0E57E8;
   color: white;
 }
+
+.modal-delete-rectangle{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-delete-title{
+  font-size: 25px;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.popup-delete-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup-delete-button1{
+  border:none;
+  border-radius: 50px;
+  height: 40px;
+  width: 140px;
+  background: white;
+  color:#7492ed;  
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  margin-left: 10px;
+  transition: .5s;
+}
+
+.popup-delete-button2{
+  border:none;
+  border-radius: 50px;
+  height: 40px;
+  width: 140px;
+  background: white;
+  color:#7492ed;  
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: 10px;
+  transition: .5s;
+}
+
+.popup-delete-button1:hover{
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.popup-delete-button2:hover{
+  background-color: #00e64d;
+  color: white;
+}

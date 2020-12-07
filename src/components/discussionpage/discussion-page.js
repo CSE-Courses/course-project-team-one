@@ -28,6 +28,7 @@ function DiscussionPage() {
   const [popUp, setPopUp] = useState(false);
   const [popupSubject, setPopupSubject] = useState("");
   const [popupQuestion, setPopupQuestion] = useState("");
+  const [deletePopup, setDeletepopup] = useState(false);
 
   const getClasses = () =>{
     //'https://immense-island-74461.herokuapp.com/classes/'
@@ -57,6 +58,10 @@ function DiscussionPage() {
 
   const popUpState = () =>{
     setPopUp(!popUp);
+  }
+
+  const deletePopupState = () =>{
+    setDeletepopup(!deletePopup);
   }
 
   const addConvo = () =>{
@@ -142,7 +147,6 @@ function DiscussionPage() {
     setSelectedChat(value.mssg);
   }
 
-    console.log(classid);
     return (
       <div>
         <AppHeader username={username} password={password} currentClass ={currentClass}/>
@@ -161,7 +165,7 @@ function DiscussionPage() {
             </div>
             <div className="discussion-messages-container">
             <Messagebubbles convo={convo} username={username} actualChat={selectedChat}></Messagebubbles>
-            <Sendbox sendMessage={sendMessage} text={text} setText={setText} sendMessageButton={sendMessageButton} selectedChat={selectedChat}></Sendbox>
+            <Sendbox sendMessage={sendMessage} text={text} setText={setText} sendMessageButton={sendMessageButton} selectedChat={selectedChat} deletePopupState={deletePopupState}></Sendbox>
             </div>
             </div>
         </div>
@@ -172,6 +176,15 @@ function DiscussionPage() {
             <p1 className="popup-titles">Ask your question</p1>
             <input className="popup-question" placeholder="Question..." onChange={e => setPopupQuestion(e.target.value)} value={popupQuestion}></input>
             <button onClick = {e => addConvo()} className="popup-button">Done</button>
+          </div>
+        </div>
+        <div className={`modal-background modalVisible-${deletePopup}`}>
+          <div className='modal-delete-rectangle'>
+            <p1 className="popup-delete-title">Are you sure you want to delete your conversation?</p1>
+            <div className="popup-delete-container">
+            <button className="popup-delete-button2" onClick={e => deletePopupState()}>No</button>
+              <button className="popup-delete-button1">Yes</button>
+            </div>
           </div>
         </div>
       </div>
