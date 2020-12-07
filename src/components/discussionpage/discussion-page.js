@@ -102,10 +102,10 @@ function DiscussionPage() {
       deleteMessages();
       getSelectedChat();
     }
-    // axios.post('http://localhost:5000/classes/updateroom/' + classid, {
-    //     rooms: currChats,
-    //     messages: convo
-    //   });
+    axios.post('http://localhost:5000/classes/updateroom/' + classid, {
+        rooms: currChats,
+        messages: convo
+      });
     deletePopupState();
   }
   
