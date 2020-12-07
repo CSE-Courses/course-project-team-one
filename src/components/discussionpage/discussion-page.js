@@ -174,6 +174,7 @@ function DiscussionPage() {
     setSelectedChat(value.mssg);
   }
 
+    console.log(convo);
     return (
       <div>
         <AppHeader username={username} password={password} currentClass ={currentClass}/>
@@ -192,7 +193,7 @@ function DiscussionPage() {
             </div>
             <div className="discussion-messages-container">
             <Messagebubbles convo={convo} username={username} actualChat={selectedChat}></Messagebubbles>
-            <Sendbox sendMessage={sendMessage} text={text} setText={setText} sendMessageButton={sendMessageButton} selectedChat={selectedChat} deletePopupState={deletePopupState}></Sendbox>
+            <Sendbox sendMessage={sendMessage} text={text} setText={setText} sendMessageButton={sendMessageButton} selectedChat={selectedChat} deletePopupState={deletePopupState} convo={convo} username={username} selectedChat={selectedChat}></Sendbox>
             </div>
             </div>
         </div>
