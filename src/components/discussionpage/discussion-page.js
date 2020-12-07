@@ -145,15 +145,6 @@ function DiscussionPage() {
     console.log(classid);
     return (
       <div>
-        <div className={`modal-background modalVisible-${popUp}`}>
-          <div className='modal-rectangle'>
-            <p1 className="popup-titles">Subject</p1>
-            <input className="popup-subject"placeholder="Subject..." onChange={e => setPopupSubject(e.target.value)} value={popupSubject}></input>
-            <p1 className="popup-titles">Ask your question</p1>
-            <input className="popup-question" placeholder="Question..." onChange={e => setPopupQuestion(e.target.value)} value={popupQuestion}></input>
-            <button onClick = {e => addConvo()} className="popup-button">Done</button>
-          </div>
-        </div>
         <AppHeader username={username} password={password} currentClass ={currentClass}/>
         <Link to={{pathname:"/", data:{username,password, currentClass}}}><button className="backhome-discussion">
           <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
@@ -173,6 +164,15 @@ function DiscussionPage() {
             <Sendbox sendMessage={sendMessage} text={text} setText={setText} sendMessageButton={sendMessageButton} selectedChat={selectedChat}></Sendbox>
             </div>
             </div>
+        </div>
+        <div className={`modal-background modalVisible-${popUp}`}>
+          <div className='modal-rectangle'>
+            <p1 className="popup-titles">Subject</p1>
+            <input className="popup-subject"placeholder="Subject..." onChange={e => setPopupSubject(e.target.value)} value={popupSubject}></input>
+            <p1 className="popup-titles">Ask your question</p1>
+            <input className="popup-question" placeholder="Question..." onChange={e => setPopupQuestion(e.target.value)} value={popupQuestion}></input>
+            <button onClick = {e => addConvo()} className="popup-button">Done</button>
+          </div>
         </div>
       </div>
     );
