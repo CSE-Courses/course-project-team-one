@@ -20,7 +20,11 @@ const ClassSelect = ({id, username, password}) => {
       const getUser = () =>{
           if(id != ""){
               //'https://immense-island-74461.herokuapp.com/users/'
-            axios.get('http://localhost:5000/users/' + id).then(res => {
+            // axios.get('http://localhost:5000/users/' + id).then(res => {
+            //     setUser((res.data).classes);
+            //     setClass((res.data).classes[0].class);
+            // })
+            axios.get('https://immense-island-74461.herokuapp.com/users/' + id).then(res => {
                 setUser((res.data).classes);
                 setClass((res.data).classes[0].class);
             })

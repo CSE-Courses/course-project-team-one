@@ -26,7 +26,10 @@ function ProfilePage() {
 
   const getUser = () =>{  
         //'https://immense-island-74461.herokuapp.com/users/'
-        axios.get('http://localhost:5000/users/').then(res => {
+        // axios.get('http://localhost:5000/users/').then(res => {
+        // setUser((res.data));
+        // })
+        axios.get('https://immense-island-74461.herokuapp.com/users/').then(res => {
         setUser((res.data));
         })
   }
