@@ -48,4 +48,16 @@ router.route('/update/:id').post((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
   });
 
+  router.route('/updatePassword/:id').post((req, res) => {
+    User.findById(req.params.id)
+      .then(users => {
+        users.password = req.body.password;
+        
+        users.save()
+          .then(() => res.json('User updated!'))
+          .catch(err => res.status(400).json('Error: ' + err));
+      })
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
+
 module.exports = router;
