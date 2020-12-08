@@ -73,7 +73,7 @@ function DiscussionPage() {
       //   rooms: [popupSubject, ...currChats],
       //   messages: [[username, popupQuestion, popupSubject], ...convo]
       // });
-      axios.post('https://immense-island-74461.herokuapp.com/classes/updateroom' + classid, {
+      axios.post('https://immense-island-74461.herokuapp.com/classes/updateroom/' + classid, {
         rooms: [popupSubject, ...currChats],
         messages: [[username, popupQuestion, popupSubject], ...convo]
       });
@@ -113,7 +113,7 @@ function DiscussionPage() {
     //     rooms: currChats,
     //     messages: convo
     //   });
-    axios.post('https://immense-island-74461.herokuapp.com/classes/updateroom' + classid, {
+    axios.post('https://immense-island-74461.herokuapp.com/classes/updateroom/' + classid, {
         rooms: currChats,
         messages: convo
       });
@@ -165,7 +165,7 @@ function DiscussionPage() {
       // axios.post('http://localhost:5000/classes/updatemessage/' + classid, {
       //   messages: [[username, text, selectedChat], ...convo]
       // })
-      axios.post('https://immense-island-74461.herokuapp.com/classes/updatemessage' + classid, {
+      axios.post('https://immense-island-74461.herokuapp.com/classes/updatemessage/' + classid, {
         messages: [[username, text, selectedChat], ...convo]
       })
       socket.emit('send-message', [username, text, selectedChat]);
@@ -180,7 +180,7 @@ function DiscussionPage() {
       // axios.post('http://localhost:5000/classes/updatemessage/' + classid, {
       //   messages: [[username, text, selectedChat], ...convo]
       // })
-      axios.post('https://immense-island-74461.herokuapp.com/classes/updatemessage' + classid, {
+      axios.post('https://immense-island-74461.herokuapp.com/classes/updatemessage/' + classid, {
         messages: [[username, text, selectedChat], ...convo]
       })
       socket.emit('send-message', [username, text, selectedChat]);
