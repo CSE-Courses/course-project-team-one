@@ -1,11 +1,43 @@
 const router = require('express').Router();
+const bcrypt = require('bcrypt');
 let User = require('../models/user-model');
 
 router.route('/').get((req, res) => {
-  User.find()
+User.find()
     .then(users => res.json(users))
     .catch(err => res.status(400).json('Error: ' + err));
 });
+router.get('/login', (req, res) => {
+  //email and password
+  User.username
+  const username = req.body.username
+  const password = req.body.password
+
+  //find user exist or not
+  User.findOne({ username })
+      .then(user => {
+          //if user not exist than return status 400
+          if (!user) return res.status(400).json({ msg: "User not exist" })
+
+          //if user exist than compare password
+          //password comes from the user
+          //user.password comes from the database
+          bcrypt.compare(password, user.password, (err, data) => {
+              //if error than throw error
+              if (err) throw err
+
+              //if both match than you can do anything
+              if (data) {
+                  return res.status(200).json({ msg: "Login success" })
+              } else {
+                  return res.status(401).json({ msg: "Invalid credencial" })
+              }
+
+          })
+
+      })
+
+})
 
 router.route('/add').post((req, res) => {
   const username = req.body.username;
@@ -18,7 +50,6 @@ router.route('/add').post((req, res) => {
 
   const newUser = new User({username, password, UBIT, email, classes, 
     classUpdates, assignmentUpdates});
-
   newUser.save()
     .then(() => res.json('User added!'))
     .catch(err => res.status(400).json('Error: ' + err));
