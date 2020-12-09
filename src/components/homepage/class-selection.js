@@ -4,7 +4,7 @@ import HomebuttonLayout from './homebutton-layout';
 import {BrowserRouter as Router, Route, Switch, Link, Redirect, useLocation} from "react-router-dom";
 
     
-const ClassSelect = ({id, username}) => {
+const ClassSelect = ({id, username, password}) => {
     
     const[user, setUser] = useState([]);
     const [currentClass, setClass] = useState("");
@@ -45,7 +45,7 @@ const ClassSelect = ({id, username}) => {
                         </select>
                     </div>
                 </form>
-                <HomebuttonLayout username={username} id = {id} currentClass = {currentClass}></HomebuttonLayout>
+                <HomebuttonLayout username={username} id = {id} currentClass = {currentClass} password={password}></HomebuttonLayout>
             </div>
             
         )
