@@ -36,7 +36,7 @@ function ProfilePage() {
     }
 
     else if(data == null){
-      return(<Redirect to= "/login"></Redirect>)
+      return(<Redirect to= "/"></Redirect>)
      }
 
      const username = data.username;
@@ -51,7 +51,7 @@ function ProfilePage() {
           correctUser = user[index];
         }
       }
-      if(correctInfo == false){return(<Redirect to= "/login"></Redirect>)}
+      if(correctInfo == false){return(<Redirect to= "/"></Redirect>)}
     }
 
     console.log(user.length);
@@ -88,7 +88,7 @@ function ProfilePage() {
                 </div>
               </div>
            
-              <Link to={{pathname:"/login"}}>
+              <Link to={{pathname:"/"}}>
                 <button className = "signout-button">Sign out</button>
               </Link>
 
