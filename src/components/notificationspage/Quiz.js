@@ -27,7 +27,7 @@ export default function App(){
                 {answer_selection: "Mac OS X", isCorrect: true},
                 {answer_selection: "Linux", isCorrect: false},
                 {answer_selection:'Windows Vista', isCorrect: false},
-                {answer_selection: 'Windows 8', isCorrect: true},
+                {answer_selection: 'Windows 8', isCorrect: false},
             ],
 
         },
