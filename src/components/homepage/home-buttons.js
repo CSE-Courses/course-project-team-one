@@ -1,15 +1,46 @@
-import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {BrowserRouter as Router, Route, Switch, Link, Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch, Link, Redirect, useLocation} from "react-router-dom";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { render } from '@testing-library/react';
 import './home-page.css';
 import '../icons/icons'
 
 const Homebuttons = ({icon,text, notify, link, username, password, currentClass}) =>{
-    if(notify.length % 2 == 0){
-        notify = 0;
+    const data = useLocation().data;
+
+    const[Classes, setClasses] = useState([]);
+    const[ClassAssignments, setClassAssignments] = useState([]);
+    
+        useEffect(() => {
+        getClasses();
+        }, []);
+    
+    const getClasses = () =>{
+        axios.get('http://localhost:5000/classes').then(res => setClasses(res.data));
+        //axios.get('https://immense-island-74461.herokuapp.com/classes').then(res => setClasses(res.data));
+    }
+    const getAssignments = () =>{
+        axios.get('http://localhost:5000/assignments').then(res => setClassAssignments(res.data));
+        //axios.get('https://immense-island-74461.herokuapp.com/assignments').then(res => setClassAssignments(res.data));
+    }
+    if(Classes.length < 1){
+        return(
+            <h3>Loading...</h3>
+        )
+    }else{     
+    const myClass = currentClass
+    var selectedClass;
+    for(var i = 0; i < Classes.length;i++){
+        if(Classes[i].className == myClass){
+            selectedClass = i;  
+        }
+    }
+    if(selectedClass != null && Classes[selectedClass].assignments.length > 0){
+        notify = Classes[selectedClass].assignments.length;
     }
     else{
-        notify = 3;
+        notify = 0;
     }
     if(notify > 0){
         if(link == "/assignments"){
@@ -141,7 +172,7 @@ const Homebuttons = ({icon,text, notify, link, username, password, currentClass}
             )
         }
     }
-
+    }
 
 }
 
