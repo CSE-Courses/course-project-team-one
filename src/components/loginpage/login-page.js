@@ -31,7 +31,7 @@ function LoginPage() {
                 <FontAwesomeIcon icon = "lock" size="2x"/>
                 <input classname="input" name="password" onChange={e => setPassword(e.target.value)} type="password" placeholder="  Password" value={password}></input></div>
                 <br></br><br></br><br></br>
-                <div className="button-div"><Link to={{pathname: "/login", data:{username,password, currentClass}}}><button onClick ={reset} className="button-login" >Login</button></Link></div>
+                <div className="button-div"><Link to={{pathname: "/", data:{username,password, currentClass}}}><button onClick ={reset} className="button-login" >Login</button></Link></div>
               </form>  
             </div>
           </div>
