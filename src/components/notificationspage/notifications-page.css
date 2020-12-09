@@ -109,7 +109,7 @@ width: 50px;
 
 .contact-form{
   width: 10px;
-  height: 10px;
+  height: 11px;
   justify-content: center;
   display: flex;
 
@@ -180,7 +180,6 @@ margin-top: 40px;
   border-radius: 20px;
   position: relative;
 }
-
 .Q_num {
   margin-bottom: 20px;
 }
