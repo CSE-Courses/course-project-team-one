@@ -46,7 +46,6 @@ function Announcementpage() {
   const password = data.password; 
   const currentClass = data.currentClass
   var classmessage;
-  var selectedClass
   for(var i = 0; i < PdfLinks.length; i++){
    // Pdfdate = PdfLinks[1].classes
     //new1= PdfLinks[2].classes
@@ -54,7 +53,6 @@ function Announcementpage() {
       classmessage=PdfLinks[i].message
   }
   }
-
 
     return (
       <div>
@@ -74,6 +72,12 @@ function Announcementpage() {
           {classmessage }
       </Modal>
       </div>  
+
+      <Link to={{pathname:"/Quiz", data:{username,password, currentClass}}}><button className="Modal_button_open">
+        Quiz
+      </button></Link>
+      
+   
 
 </div>
     );
