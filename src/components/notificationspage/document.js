@@ -70,7 +70,7 @@ const getClasses = () =>{
 
     
     const deteleSingleRow=(courseLinks,Pdfdate)=>{
-     if(courseLinks==0) return(<h3 className="Loading"></h3>)
+     if(courseLinks==0) return(<h3 className="Loading">read</h3>)
      // filter new courseLink
       var list= List
       list =courseLinks
@@ -82,7 +82,7 @@ const getClasses = () =>{
        delduedate = Pdfdate
          delduedate.splice(0,1)
          setDate([...delduedate])
-
+        
        console.log("date:",Pdfdate);
        console.log("courselinks: ",courseLinks);
 
@@ -92,12 +92,17 @@ const getClasses = () =>{
 
     const deteleSingleRow1=(duedate)=>{
       // filter new duedate
+ 
        var delduedate = Date
        delduedate = duedate
          delduedate.splice(0,4)
          setDate([...delduedate])
        console.log("date:",duedate)
-       
+       if(duedate==null){
+        return (
+          <h3 className="Loading"></h3>
+      );
+       }
     };
 
   

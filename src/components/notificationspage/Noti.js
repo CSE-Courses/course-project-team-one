@@ -30,7 +30,7 @@ const Noti_link = ({titles,links,deadlines,deteleitem}) =>{
             <div className="deadlineBubble">
                 {links.map ((links,index)=>
                     
-                 <div className="docLinks"><a href={links[0]} target="_blank">{links[1]}</a><a className="deadline-text">{deadlines[index]}</a> 
+                    <div className="NotiLinks"><a target="_blank">{links[1]}</a> <a className="deadline-text">{deadlines[index]}</a> 
                  <button classname="deteleButton" onClick={()=>{deteleitem(links,deadlines[index])}}>X</button> <form className="contact-form" onSubmit={sendEmail}>
             <input type="submit" value="Send Email" />
           </form></div>
