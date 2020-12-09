@@ -69,13 +69,15 @@ function HomePage() {
    if(status === true){
     return (
       <div>
-        <AppHeader username={data.username} currentClass={data.currentClass}/> 
-        <ClassSelect username={data.username} id = {id} classExist = ""></ClassSelect>
+        <AppHeader username={data.username} currentClass={data.currentClass} password={data.password}/> 
+        <ClassSelect username={data.username} id = {id} classExist = "" password={data.password}></ClassSelect>
   
       </div>
     );
    }
    else{
+     console.log("yo");
+     console.log(data.password);
     return(<Redirect to= "/login"></Redirect>)
    }
    
