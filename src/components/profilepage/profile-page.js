@@ -46,7 +46,7 @@ function ProfilePage() {
     if(user.length > 0){
       var correctInfo = false;
       for(var index = 0; index < user.length; index++){
-        if(user[index].username == data.username && user[index].password == data.password){
+        if(user[index].username == data.username){
           correctInfo = true;
           correctUser = user[index];
         }
@@ -54,7 +54,7 @@ function ProfilePage() {
       if(correctInfo == false){return(<Redirect to= "/login"></Redirect>)}
     }
 
-    console.log(correctUser);
+    console.log(user.length);
     return (
       
       <div>
