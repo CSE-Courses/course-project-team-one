@@ -32,12 +32,14 @@ function GradesPage (){
      
       }, []);
   const getClasses = () =>{
-    //axios.get('http://localhost:5000/classes').then(res => setClasses(res.data));
-    axios.get('https://immense-island-74461.herokuapp.com/classes').then(res => setClasses(res.data));
+    // axios.get('http://localhost:5000/classes').then(res => setClasses(res.data));
+    axios.get('https://tranquil-coast-56327.herokuapp.com/classes').then(res => setClasses(res.data));
+    //axios.get('https://immense-island-74461.herokuapp.com/classes').then(res => setClasses(res.data));
   }
   const getAssignments = () =>{
-    //axios.get('http://localhost:5000/assignments').then(res =>  setClassAssignments(res.data));
-    axios.get('https://immense-island-74461.herokuapp.com/assignments').then(res =>  setClassAssignments(res.data));
+    // axios.get('http://localhost:5000/assignments').then(res =>  setClassAssignments(res.data));
+    axios.get('https://tranquil-coast-56327.herokuapp.com/assignments').then(res =>  setClassAssignments(res.data));
+    //axios.get('https://immense-island-74461.herokuapp.com/assignments').then(res =>  setClassAssignments(res.data));
   }
   if(Classes.length < 1){
     return(
@@ -47,11 +49,40 @@ function GradesPage (){
 else{
     const currentClass = data.currentClass;
     var selectedClass;
+    var index=0;
     for(var i=0; i<Classes.length; i++){
       if(Classes[i].className == currentClass){
         selectedClass = i
       }
     }
+    for(var i=0; i<Classes[selectedClass].students.length; i++){
+      if(Classes[selectedClass].students[i]==username){
+        index=i;
+      }
+    }
+    var average=0;
+    var avg;
+    let arr = new Array();
+    for(var j=0; j<Classes[selectedClass].assignments.length; j++){
+      for(var i=0; i<Classes[selectedClass].assignments[j][3].length; i++){
+        //if nul then 0
+        if(Classes[selectedClass].assignments[j][3][i]=="N/G"){
+
+        }
+        else{
+          average = parseInt(Classes[selectedClass].assignments[j][3][i]) + average;
+        }
+      }
+      average=average/Classes[selectedClass].assignments[j][3].length;
+      avg = average.toString(10);
+      arr.push(avg);
+      average=0;
+      //set average
+      //average=0
+    }
+    //var avg = average.toString(10);
+
+    //var a = parseInt("10")
     return (
       <div>
         <AppHeader username={username} password={password} currentClass={currentClass}/>
@@ -64,20 +95,35 @@ else{
         <div>
         
         <br></br>
+        <table className="gradestable"><tbody>
+        <td>
         {Classes[selectedClass].assignments.map((assignment) => 
-        <text>{assignment[0]}</text>
+          <tr><text>{assignment[0]}:</text></tr>
         )}
+        </td>
+        
+        <td>
+        {Classes[selectedClass].assignments.map((assignment) => 
+          <tr><text>{assignment[3][index]}</text></tr>
+        )}
+        </td>
+                
+        <td>
+        {Classes[selectedClass].assignments.map((assignment) => 
+          <tr><text>/{assignment[2]}</text></tr>
+        )}
+        </td> 
+        
+        <td>
+          {arr.map((a)=>
+            <tr><text>Class Average:{a} </text></tr>
+          )}
+        </td>  
+        </tbody>
+        </table> 
+        
           <table className="gradestable"><tbody>
             <tr>
-              <td><text className="gradestext">Assignment</text></td>
-              <td><Link to={{pathname:"/HW",data:{username,password, currentClass}}}><button className="gradebuttons">
-              <text className="gradestext">Score:</text></button></Link>
-              </td>
-
-              <td><Link to={{pathname:"/submission",data:{username,password, currentClass}}}><button className="gradebuttons">
-              <text className="gradestext">View Submission</text></button></Link>
-              </td>
-
               <td><Link to={{pathname:"/regrade",data:{username,password, currentClass}}}><button className="gradebuttons">
               <text className="gradestext">Regrade Request</text></button></Link>
               </td>

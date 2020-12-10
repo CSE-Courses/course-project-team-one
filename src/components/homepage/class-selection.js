@@ -19,8 +19,12 @@ const ClassSelect = ({id, username, password}) => {
 
       const getUser = () =>{
           if(id != ""){
-              //axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
-            axios.get('https://immense-island-74461.herokuapp.com/users/' + id).then(res => {
+              //'https://immense-island-74461.herokuapp.com/users/'
+            // axios.get('http://localhost:5000/users/' + id).then(res => {
+            //     setUser((res.data).classes);
+            //     setClass((res.data).classes[0].class);
+            // })
+            axios.get('https://tranquil-coast-56327.herokuapp.com/users/' + id).then(res => {
                 setUser((res.data).classes);
                 setClass((res.data).classes[0].class);
             })
@@ -31,11 +35,11 @@ const ClassSelect = ({id, username, password}) => {
         setClass(e.target.value);
         console.log(currentClass);
     }
-    console.log(currentClass);
-    if(id ==  ""){return(<header></header>);}
+    console.log(id);
+    if(currentClass ==  ""){return((<header>no</header>));}
     else {
         return(
-            <div>
+            <div>   
                 <form>
                     <div className = "select">
                         <select className="class-select" onChange={changeClass}>
@@ -45,7 +49,7 @@ const ClassSelect = ({id, username, password}) => {
                         </select>
                     </div>
                 </form>
-                <HomebuttonLayout username={username} password={password} id = {id} currentClass = {currentClass}></HomebuttonLayout>
+                <HomebuttonLayout username={username} id = {id} currentClass = {currentClass} password={password}></HomebuttonLayout>
             </div>
             
         )

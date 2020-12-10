@@ -36,14 +36,6 @@ function setNotifications(){
                 </select>
             </div>
         </form>
-        <select className="easter-egg"name="ingredients[]" id="ingredients" multiple="multiple">
-    <option value="cheese">Cheese</option>
-    <option value="tomatoes">Tomatoes</option>
-    <option value="mozarella">Mozzarella</option>
-    <option value="mushrooms">Mushrooms</option>
-    <option value="pepperoni">Pepperoni</option>
-    <option value="onions">Onions</option>
-</select>
         </div>
     )
 }

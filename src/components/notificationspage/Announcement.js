@@ -1,22 +1,60 @@
-import React from 'react';
+import React, {Component, useState , useEffect} from "react";
 import "./notifications-page.css";
 import {BrowserRouter as Router, Route, Switch, Link, Redirect, useLocation} from "react-router-dom";
 import AppHeader from '../appheaderpage/appheader';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import Modal from  './Modal'
+import axios from 'axios';
 
 function Announcementpage() {
+
   const data = useLocation().data;
   //If incorrect login go back to login, otherwise stay
+  const [isOpen, setIsIpen]=useState(false)
+  const [isOpen1, setIsIpen1]=useState(false)
+
+  const[PdfLinks, setPdfdate] =React.useState([]);
+
+  useEffect(() => {
+    getPdfDate();
+    }, []);
+
+    const getPdfDate = () =>{
+      // axios.get('http://localhost:5000/noti').then(res => setPdfdate(res.data));
+      axios.get('https://tranquil-coast-56327.herokuapp.com/noti').then(res => setPdfdate(res.data));
   
+    }
+
+
    if(data == null){
     return(<Redirect to= "/login"></Redirect>)
    }
 
-  
+  const BUTTON_WAPPER_SYTLES={
+    position: 'relative',
+    zIndex:1
+  }
+
+  const OTHER_CONTENT_STYTLES ={
+    position: 'relative',
+    zIndex:2,
+    backgroundColor:'red',
+    padding:'10px'
+  }
+
+
   const username = data.username;
   const password = data.password; 
   const currentClass = data.currentClass
-    
+  var classmessage;
+  for(var i = 0; i < PdfLinks.length; i++){
+   // Pdfdate = PdfLinks[1].classes
+    //new1= PdfLinks[2].classes
+   if(PdfLinks[i].classname == currentClass){
+      classmessage=PdfLinks[i].message
+  }
+  }
+
     return (
       <div>
       <AppHeader username={username} password={password} currentClass={currentClass}/>
@@ -28,15 +66,22 @@ function Announcementpage() {
    <FontAwesomeIcon icon = 'arrow-left' size = "4x"/>
       </button></Link>
 
-    <div className="news">   
-          <h1 className="post">Post time:</h1>                  
-          <p classname="content">  Announcement will be posted </p>
-        </div>
+    
+      <div classname="Announcement_message"  style = {BUTTON_WAPPER_SYTLES} onClick={() => console.log('clicked')}>
+      <button className= "Modal_button_open" onClick={()=>setIsIpen(true)}> Message  </button>
+        <Modal open ={isOpen}  onClose={()=>setIsIpen(false)}>
+          {classmessage }
+      </Modal>
+      </div>  
 
+      <Link to={{pathname:"/Quiz", data:{username,password, currentClass}}}><button className="Modal_button_open">
+        Quiz
+      </button></Link>
+      
+   
 
 </div>
     );
     
-  
   }
   export default Announcementpage;

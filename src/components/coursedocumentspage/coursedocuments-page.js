@@ -15,10 +15,10 @@ function CourseDocumentsPage() {
     }, []);
 
 const getClasses = () =>{
-    //axios.get('http://localhost:5000/classes').then(res => setClassLinks(res.data));
-    axios.get('https://immense-island-74461.herokuapp.com/classes').then(res => setClassLinks(res.data));
+    // axios.get('http://localhost:5000/classes').then(res => setClassLinks(res.data));
+    axios.get('https://tranquil-coast-56327.herokuapp.com/classes').then(res => setClassLinks(res.data));
+    //axios.get('https://immense-island-74461.herokuapp.com/classes').then(res => setClassLinks(res.data));
     
-    //axios.get('https://ubwebapp-backend.herokuapp.com/classes/').then(res => setClasses(res.data)); //Use this one for public deployment
   }
 
   const data = useLocation().data;

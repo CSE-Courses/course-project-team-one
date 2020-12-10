@@ -24,9 +24,12 @@ function ProfilePage() {
   },[]);
 
 
-  const getUser = () =>{
-        //axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
-        axios.get('https://immense-island-74461.herokuapp.com/users/').then(res => {
+  const getUser = () =>{  
+        //'https://immense-island-74461.herokuapp.com/users/'
+        // axios.get('http://localhost:5000/users/').then(res => {
+        // setUser((res.data));
+        // })
+        axios.get('https://tranquil-coast-56327.herokuapp.com/users/').then(res => {
         setUser((res.data));
         })
   }
@@ -36,7 +39,7 @@ function ProfilePage() {
     }
 
     else if(data == null){
-      return(<Redirect to= "/login"></Redirect>)
+      return(<Redirect to= "/"></Redirect>)
      }
 
      const username = data.username;
@@ -46,15 +49,15 @@ function ProfilePage() {
     if(user.length > 0){
       var correctInfo = false;
       for(var index = 0; index < user.length; index++){
-        if(user[index].username == data.username && user[index].password == data.password){
+        if(user[index].username == data.username){
           correctInfo = true;
           correctUser = user[index];
         }
       }
-      if(correctInfo == false){return(<Redirect to= "/login"></Redirect>)}
+      if(correctInfo == false){return(<Redirect to= "/"></Redirect>)}
     }
 
-    console.log(correctUser);
+    console.log(user.length);
     return (
       
       <div>
@@ -88,7 +91,7 @@ function ProfilePage() {
                 </div>
               </div>
            
-              <Link to={{pathname:"/login"}}>
+              <Link to={{pathname:"/"}}>
                 <button className = "signout-button">Sign out</button>
               </Link>
 
