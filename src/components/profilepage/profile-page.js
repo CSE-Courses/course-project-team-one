@@ -36,7 +36,7 @@ function ProfilePage() {
     }
 
     else if(data == null){
-      return(<Redirect to= "/login"></Redirect>)
+      return(<Redirect to= "/"></Redirect>)
      }
 
      const username = data.username;
@@ -46,15 +46,15 @@ function ProfilePage() {
     if(user.length > 0){
       var correctInfo = false;
       for(var index = 0; index < user.length; index++){
-        if(user[index].username == data.username && user[index].password == data.password){
+        if(user[index].username == data.username){
           correctInfo = true;
           correctUser = user[index];
         }
       }
-      if(correctInfo == false){return(<Redirect to= "/login"></Redirect>)}
+      if(correctInfo == false){return(<Redirect to= "/"></Redirect>)}
     }
 
-    console.log(correctUser);
+    console.log(user.length);
     return (
       
       <div>
@@ -88,7 +88,7 @@ function ProfilePage() {
                 </div>
               </div>
            
-              <Link to={{pathname:"/login"}}>
+              <Link to={{pathname:"/"}}>
                 <button className = "signout-button">Sign out</button>
               </Link>
 

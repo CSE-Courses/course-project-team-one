@@ -12,12 +12,22 @@ function HomePage() {
 
   const[users, setUsers] = useState([]);
   const data = useLocation().data;
-  var id = "";   //The unique id created in the backend
+  const [id, setid] = useState("");
+  const [status, setStatus] = useState(true);
   
 
   useEffect(() => {
     getUsers();
+    getLogin();
   }, []);
+
+  useEffect(() => {
+    getLogin();
+  }, [users]);
+
+  useEffect(() => {
+    getLogin();
+  }, [id]);
 
   const getUsers = () =>{
         axios.get('http://localhost:5000/users').then(res => setUsers(res.data));
@@ -25,32 +35,55 @@ function HomePage() {
       //axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
   }
 
-   //If incorrect login go back to login, otherwise stay
-   
-  if(users.length > 0){
-    var correctInfo = false;
-    for(var index = 0; index < users.length; index++){
-      if(users[index].username == data.username && users[index].password == data.password){
-        correctInfo = true;
-        id = users[index]._id;
-        break;
+  const getLogin = () =>{
+    console.log(users.length);
+    if(users.length > 0){
+      var correctInfo = false;
+      for(var index = 0; index < users.length; index++){
+        if(users[index].username == data.username){
+          correctInfo = true;
+          setid(users[index]._id);
+          console.log(users[index]._id);
+          console.log(id);
+          break;
+        }
       }
+      // if(correctInfo == false){return(<Redirect to= "/login"></Redirect>)}
+      console.log(id);
+      axios.get('http://localhost:5000/users/login/' + id + '/' + data.password).then(res => {
+        console.log(res.data);
+        var msg = res.data.msg;
+        console.log(msg);
+        if(msg.localeCompare("Login success") == -1){
+          setStatus(false);
+        };
+      });
     }
-    if(correctInfo == false){return(<Redirect to= "/login"></Redirect>)}
+    
   }
+   //If incorrect login go back to login, otherwise stay
     if(data == null){
      return(<Redirect to= "/login"></Redirect>)
    }
-
    //Correct login
-  return (
+   if(status === true){
+    return (
       <div>
-        <AppHeader username={data.username} password={data.password} currentClass={data.currentClass}/> 
-        <ClassSelect username={data.username} password={data.password} id = {id} classExist = ""></ClassSelect>
-        
+        <AppHeader username={data.username} currentClass={data.currentClass} password={data.password}/> 
+        <ClassSelect username={data.username} id = {id} classExist = "" password={data.password}></ClassSelect>
+  
       </div>
-  );
+    );
+   }
+   else{
+     console.log("yo");
+     console.log(data.password);
+    return(<Redirect to= "/login"></Redirect>)
+   }
+   
+
+   
  
-}
+  }
 
 export default HomePage;
