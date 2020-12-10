@@ -31,8 +31,8 @@ const ClassSelect = ({id, username, password}) => {
         setClass(e.target.value);
         console.log(currentClass);
     }
-    console.log(currentClass);
-    if(id ==  ""){return(<header>no</header>);}
+    console.log(id);
+    if(currentClass ==  ""){return((<header>no</header>));}
     else {
         return(
             <div>   
