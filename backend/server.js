@@ -4,6 +4,11 @@ const mongoose = require('mongoose');
 const socketio = require('socket.io')
 const http = require('http');
 
+const path = require('path');
+//const exphbs = require('express-handlebars'); //new add
+//const nodemailer = require('nodemailer'); //new add
+
+
 require('dotenv').config();
 
 const app = express();
@@ -11,6 +16,7 @@ const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+//app.use('/public', express.static(path.join(__dirname, 'public'))); //new add
 const server = http.createServer(app);
 const io = socketio(server);
 
@@ -34,6 +40,17 @@ app.use('/users', usersRouter);
 app.use('/classes',classesRouter);
 app.use('/assg', assgRouter);
 app.use('/noti', notiRouter);
+
+/*
+//new add>
+app.get('/', (req, res)=>{
+  res.render('contact');
+});
+app.post('/send', (req,res)=>{
+  console.log(req.body);
+});
+//<new add
+*/
 
 
 io.on('connection', (socket) => {
