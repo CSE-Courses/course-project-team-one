@@ -24,12 +24,14 @@ function CourseDocumentsPage() {
   
   
 const getClasses = () =>{
-    axios.get('http://localhost:5000/classes').then(res => setClassLinks(res.data));
+    // axios.get('http://localhost:5000/classes').then(res => setClassLinks(res.data));
+    axios.get('https://tranquil-coast-56327.herokuapp.com/classes').then(res => setClassLinks(res.data));
 
   }
 
   const getPdfDate = () =>{
-    axios.get('http://localhost:5000/noti').then(res => setPdfdate(res.data));
+    // axios.get('http://localhost:5000/noti').then(res => setPdfdate(res.data));
+    axios.get('https://tranquil-coast-56327.herokuapp.com/noti').then(res => setPdfdate(res.data));
 
   }
 

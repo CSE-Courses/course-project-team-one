@@ -32,7 +32,10 @@ function DiscussionPage() {
 
   const getClasses = () =>{
     //'https://immense-island-74461.herokuapp.com/classes/'
-    axios.get('http://localhost:5000/classes/').then(res => {
+    // axios.get('http://localhost:5000/classes/').then(res => {
+    //   setAllClasses(res.data);
+    //   })
+    axios.get('https://tranquil-coast-56327.herokuapp.com/classes/').then(res => {
       setAllClasses(res.data);
       })
       
@@ -64,9 +67,22 @@ function DiscussionPage() {
     setDeletepopup(!deletePopup);
   }
 
+  const checkUnique = (str) =>{
+    for(var x = 0; x < currChats.length; x++){
+      if(currChats[x] === str){
+        return false;
+      }
+    }
+    return true;
+  }
+
   const addConvo = () =>{
-    if(popupSubject.length > 0 && popupQuestion.length > 0){
-      axios.post('http://localhost:5000/classes/updateroom/' + classid, {
+    if(popupSubject.length > 0 && popupQuestion.length > 0 && checkUnique(popupSubject)){
+      // axios.post('http://localhost:5000/classes/updateroom/' + classid, {
+      //   rooms: [popupSubject, ...currChats],
+      //   messages: [[username, popupQuestion, popupSubject], ...convo]
+      // });
+      axios.post('https://tranquil-coast-56327.herokuapp.com/classes/updateroom/' + classid, {
         rooms: [popupSubject, ...currChats],
         messages: [[username, popupQuestion, popupSubject], ...convo]
       });
@@ -102,7 +118,11 @@ function DiscussionPage() {
       deleteMessages();
       getSelectedChat();
     }
-    axios.post('http://localhost:5000/classes/updateroom/' + classid, {
+    // axios.post('http://localhost:5000/classes/updateroom/' + classid, {
+    //     rooms: currChats,
+    //     messages: convo
+    //   });
+    axios.post('https://tranquil-coast-56327.herokuapp.com/classes/updateroom/' + classid, {
         rooms: currChats,
         messages: convo
       });
@@ -111,14 +131,14 @@ function DiscussionPage() {
   
 
   useEffect(() =>{
-      socket=io('localhost:5000', {transports: ['websocket']});
+      socket=io('tranquil-coast-56327.herokuapp.com', {transports: ['websocket']});
 
     return () => {
       socket.disconnect();
       socket.off();
     }
 
-  }, ['localhost:5000'])
+  }, ['tranquil-coast-56327.herokuapp.com'])
 
   useEffect(() =>{
     socket.on('message', message =>{
@@ -150,7 +170,10 @@ function DiscussionPage() {
     event.preventDefault();
 
     if(text){
-      axios.post('http://localhost:5000/classes/updatemessage/' + classid, {
+      // axios.post('http://localhost:5000/classes/updatemessage/' + classid, {
+      //   messages: [[username, text, selectedChat], ...convo]
+      // })
+      axios.post('https://tranquil-coast-56327.herokuapp.com/updatemessage/' + classid, {
         messages: [[username, text, selectedChat], ...convo]
       })
       socket.emit('send-message', [username, text, selectedChat]);
@@ -162,7 +185,10 @@ function DiscussionPage() {
     e.preventDefault();
 
     if(text){
-      axios.post('http://localhost:5000/classes/updatemessage/' + classid, {
+      // axios.post('http://localhost:5000/classes/updatemessage/' + classid, {
+      //   messages: [[username, text, selectedChat], ...convo]
+      // })
+      axios.post('https://tranquil-coast-56327.herokuapp.com/classes/updatemessage/' + classid, {
         messages: [[username, text, selectedChat], ...convo]
       })
       socket.emit('send-message', [username, text, selectedChat]);

@@ -11,14 +11,14 @@ import axios from 'axios';
 function HomePage() {
 
   const[users, setUsers] = useState([]);
-  const data = useLocation().data;
+  var data = useLocation().data;
   const [id, setid] = useState("");
   const [status, setStatus] = useState(true);
   
 
   useEffect(() => {
     getUsers();
-    getLogin();
+    
   }, []);
 
   useEffect(() => {
@@ -30,7 +30,8 @@ function HomePage() {
   }, [id]);
 
   const getUsers = () =>{
-        axios.get('http://localhost:5000/users').then(res => setUsers(res.data));
+        // axios.get('http://localhost:5000/users').then(res => setUsers(res.data));
+        axios.get('https://tranquil-coast-56327.herokuapp.com/users').then(res => setUsers(res.data));
         //axios.get('https://immense-island-74461.herokuapp.com/users/').then(res => setUsers(res.data));
       //axios.get('https://ubwebapp-backend.herokuapp.com/users/').then(res => setUsers(res.data)); //Use this one for public deployment
   }
@@ -48,25 +49,44 @@ function HomePage() {
           break;
         }
       }
+      console.log(correctInfo);
+      if(correctInfo == false){
+        console.log("hey");
+        data = null;
+        setStatus(false);
+      }
       // if(correctInfo == false){return(<Redirect to= "/login"></Redirect>)}
       console.log(id);
-      axios.get('http://localhost:5000/users/login/' + id + '/' + data.password).then(res => {
-        console.log(res.data);
-        var msg = res.data.msg;
-        console.log(msg);
-        if(msg.localeCompare("Login success") == -1){
-          setStatus(false);
-        };
-      });
+      if(data != null){
+        // axios.get('http://localhost:5000/users/login/' + id + '/' + data.password).then(res => {
+        //   console.log(res.data);
+        //   var msg = res.data.msg;
+        //   console.log(msg);
+        //   if(msg.localeCompare("Login success") == -1){
+        //     setStatus(false);
+        //   };
+        // });
+        axios.get('https://tranquil-coast-56327.herokuapp.com/users/login/' + id + '/' + data.password).then(res => {
+          console.log(res.data);
+          var msg = res.data.msg;
+          console.log(msg);
+          if(msg.localeCompare("Login success") == -1){
+            setStatus(false);
+          };
+        });
+      }
+      
     }
     
   }
+  console.log(data);
    //If incorrect login go back to login, otherwise stay
-    if(data == null){
+    if(data === null){
      return(<Redirect to= "/login"></Redirect>)
    }
    //Correct login
-   if(status === true){
+   
+   else if(status === true && data != null){
     return (
       <div>
         <AppHeader username={data.username} currentClass={data.currentClass} password={data.password}/> 
@@ -77,8 +97,7 @@ function HomePage() {
    }
    else{
      console.log("yo");
-     console.log(data.password);
-    return(<Redirect to= "/login"></Redirect>)
+    return(<Redirect to= "/login"></Redirect>);
    }
    
 
