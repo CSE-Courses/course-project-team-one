@@ -173,7 +173,7 @@ function DiscussionPage() {
       // axios.post('http://localhost:5000/classes/updatemessage/' + classid, {
       //   messages: [[username, text, selectedChat], ...convo]
       // })
-      axios.post('https://tranquil-coast-56327.herokuapp.com/updatemessage/' + classid, {
+      axios.post('https://tranquil-coast-56327.herokuapp.com/classes/updatemessage/' + classid, {
         messages: [[username, text, selectedChat], ...convo]
       })
       socket.emit('send-message', [username, text, selectedChat]);
